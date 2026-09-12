@@ -19,7 +19,6 @@
             color: #111;
         }
 
-        /* Header */
         header {
             background-color: darkgreen;
             color: white;
@@ -31,7 +30,6 @@
             margin-bottom: 15px;
         }
 
-        /* Navigation */
         nav {
             display: flex;
             justify-content: center;
@@ -48,7 +46,6 @@
             color: lightgreen;
         }
 
-        /* Main Section */
         main {
             width: 90%;
             max-width: 1200px;
@@ -61,7 +58,6 @@
             gap: 25px;
         }
 
-        /* Card */
         .card {
             background-color: white;
             padding: 20px;
@@ -92,7 +88,6 @@
             color: #555;
         }
 
-        /* Button */
         .btn {
             display: inline-block;
             background-color: darkgreen;
@@ -109,7 +104,41 @@
             background-color: green;
         }
 
-        /* Footer */
+        /* Payment Section */
+        #payment {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            background-color: white;
+        }
+
+        #payment h2 {
+            margin-bottom: 20px;
+        }
+
+        .payment-box {
+            max-width: 500px;
+            margin: auto;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: #f5f5f5;
+        }
+
+        .payment-box p {
+            margin: 12px 0;
+        }
+
+        .whatsapp-btn {
+            display: inline-block;
+            margin-top: 20px;
+            background-color: #25D366;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         footer {
             background-color: darkgreen;
             color: white;
@@ -118,7 +147,7 @@
             margin-top: 50px;
         }
 
-        /* Mobile Responsive */
+        /* Mobile */
         @media (max-width: 800px) {
             .products {
                 grid-template-columns: 1fr;
@@ -166,12 +195,8 @@
 
                 <p>Fresh and refreshing fragrance.</p>
 
-                <a
-                    class="btn"
-                    href="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-                    target="_blank"
-                >
-                    Click Me
+                <a class="btn" href="#payment">
+                    Buy Now
                 </a>
             </div>
 
@@ -187,12 +212,8 @@
 
                 <p>Elegant fragrance for everyday use.</p>
 
-                <a
-                    class="btn"
-                    href="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-                    target="_blank"
-                >
-                    Click Me
+                <a class="btn" href="#payment">
+                    Buy Now
                 </a>
             </div>
 
@@ -208,12 +229,8 @@
 
                 <p>Modern and long-lasting fragrance.</p>
 
-                <a
-                    class="btn"
-                    href="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-                    target="_blank"
-                >
-                    Click Me
+                <a class="btn" href="#payment">
+                    Buy Now
                 </a>
             </div>
 
@@ -222,26 +239,64 @@
     </main>
 
 
+    <!-- Payment -->
+    <section id="payment">
+
+        <div class="payment-box">
+
+            <h2>Payment Details</h2>
+
+            <p>
+                <strong>Easypaisa:</strong>
+                03XX-XXXXXXX
+            </p>
+
+            <p>
+                <strong>JazzCash:</strong>
+                03XX-XXXXXXX
+            </p>
+
+            <p>
+                Payment karne ke baad payment ka screenshot
+                WhatsApp par send karein.
+            </p>
+
+            <!-- WhatsApp Number Change Here -->
+            <a
+                class="whatsapp-btn"
+                href="https://wa.me/92XXXXXXXXXX"
+                target="_blank"
+            >
+                Send Payment Screenshot
+            </a>
+
+        </div>
+
+    </section>
+
+
     <!-- About -->
     <section id="about" style="text-align: center; padding: 40px 20px;">
+
         <h2>About Sami's</h2>
+
         <p style="margin-top: 10px;">
-            Welcome to Sami's Fragrances. Discover fresh and elegant fragrances.
+            Welcome to Sami's Fragrances.
+            Discover fresh and elegant fragrances.
         </p>
+
     </section>
 
 
     <!-- Contact -->
     <section id="contact" style="text-align: center; padding: 30px 20px;">
+
         <h2>Contact Us</h2>
+
         <p style="margin-top: 10px;">
             Email: samisfragrances@example.com
-
-    Easypaisa Account:
-    <strong>03XX-XXXXXXX</strong>
-</p>
-
         </p>
+
     </section>
 
 
@@ -252,5 +307,3 @@
 
 </body>
 </html>
-
-
