@@ -1,332 +1,239 @@
+```html
 <!DOCTYPE html>
-
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
 
     <title>Sami's Fragrances</title>
 
-
-
     <style>
-
         * {
-
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
         }
-
-
 
         body {
-
             background-color: lightblue;
-
             font-family: Arial, sans-serif;
-
             color: #111;
-
         }
-
-
 
         header {
-
             background-color: darkblue;
-
             color: white;
-
             padding: 20px;
-
             text-align: center;
-
         }
-
-
 
         header h1 {
-
             margin-bottom: 15px;
-
         }
-
-
 
         nav {
-
             display: flex;
-
             justify-content: center;
-
             gap: 25px;
-
         }
-
-
 
         nav a {
-
-            color: black;
-
+            color: white;
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
 
         nav a:hover {
-
             color: lightgreen;
-
         }
-
-
 
         main {
-
             width: 90%;
-
             max-width: 1200px;
-
             margin: 40px auto;
-
         }
-
-
 
         .products {
-
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 25px;
-
         }
-
-
 
         .card {
-
             background-color: white;
-
             padding: 20px;
-
             border-radius: 20px;
-
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
             text-align: center;
-
             transition: 0.3s;
-
         }
-
-
 
         .card:hover {
-
             transform: translateY(-8px);
-
         }
-
-
 
         .card h2 {
-
             margin-bottom: 15px;
-
         }
-
-
 
         .card img {
-
             width: 100%;
-
             height: 250px;
-
             object-fit: cover;
-
             border-radius: 12px;
-
             margin-bottom: 20px;
-
         }
-
-
 
         .card p {
-
             margin-bottom: 15px;
-
             color: #555;
-
         }
-
-
 
         .btn {
-
             display: inline-block;
-
             background-color: darkgreen;
-
             color: white;
-
             padding: 12px 25px;
-
             border: none;
-
             border-radius: 8px;
-
             cursor: pointer;
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
 
         .btn:hover {
-
-            background-color: white;
-
+            background-color: green;
         }
-
-
 
         /* Payment Section */
 
         #payment {
-
             text-align: center;
-
             padding: 40px 20px;
-
             margin-top: 40px;
-
             background-color: white;
-
         }
-
-
 
         #payment h2 {
-
             margin-bottom: 20px;
-
         }
-
-
 
         .payment-box {
-
-            max-width: 500px;
-
+            max-width: 550px;
             margin: auto;
-
             padding: 25px;
-
             border-radius: 15px;
-
             background-color: lightblue;
-
         }
 
+        .payment-option {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            background-color: darkgreen;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
 
+        .payment-option:hover {
+            background-color: green;
+        }
 
-        .payment-box p {
+        .payment-details {
+            display: none;
+            background-color: white;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 12px;
+        }
 
+        .payment-details p {
             margin: 12px 0;
-
         }
 
+        /* COD Form */
 
+        #codForm {
+            display: none;
+            text-align: left;
+            background-color: white;
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 12px;
+        }
+
+        #codForm label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        #codForm input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        .order-btn {
+            width: 100%;
+            margin-top: 20px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background-color: darkblue;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .order-btn:hover {
+            background-color: blue;
+        }
 
         .whatsapp-btn {
-
             display: inline-block;
-
             margin-top: 20px;
-
             background-color: #25D366;
-
-            color: lightblue;
-
+            color: white;
             padding: 12px 25px;
-
             border-radius: 8px;
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
 
         footer {
-
             background-color: darkblue;
-
             color: white;
-
             text-align: center;
-
             padding: 20px;
-
             margin-top: 50px;
-
         }
-
-
 
         /* Mobile */
 
         @media (max-width: 800px) {
-
             .products {
-
                 grid-template-columns: 1fr;
-
             }
-
-
 
             nav {
-
                 flex-direction: column;
-
                 gap: 10px;
-
             }
-
         }
-
     </style>
-
 </head>
 
-
-
 <body>
-
-
 
     <!-- Header -->
 
@@ -334,41 +241,24 @@
 
         <h1>Welcome To Sami's Fragrances</h1>
 
-
-
         <nav>
-
             <a href="#">Home</a>
-
             <a href="#about">About</a>
-
             <a href="#contact">Contact</a>
-
         </nav>
 
     </header>
-
-
-
 
 
     <!-- Products -->
 
     <main>
 
-
-
         <h1 style="text-align: center; margin-bottom: 30px;">
-
             Our Fragrances
-
         </h1>
 
-
-
         <div class="products">
-
-
 
             <!-- Product 1 -->
 
@@ -376,32 +266,17 @@
 
                 <h2>Refreshment</h2>
 
-
-
                 <img
-
                     src="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-
-                    alt="Refreshment Perfume"
-
-                >
-
-
+                    alt="Refreshment Perfume">
 
                 <p>Fresh and refreshing fragrance.</p>
 
-
-
                 <a class="btn" href="#payment">
-
                     Buy Now
-
                 </a>
 
             </div>
-
-
-
 
 
             <!-- Product 2 -->
@@ -410,32 +285,17 @@
 
                 <h2>Fragrances</h2>
 
-
-
                 <img
-
                     src="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-
-                    alt="Fragrance Perfume"
-
-                >
-
-
+                    alt="Fragrance Perfume">
 
                 <p>Elegant fragrance for everyday use.</p>
 
-
-
                 <a class="btn" href="#payment">
-
-                    Buy Now ( RS;999)
-
+                    Buy Now (RS 999)
                 </a>
 
             </div>
-
-
-
 
 
             <!-- Product 3 -->
@@ -444,149 +304,175 @@
 
                 <h2>Mid Fresher</h2>
 
-
-
                 <img
-
                     src="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-
-                    alt="Mid Fresher Perfume"
-
-                >
-
-
+                    alt="Mid Fresher Perfume">
 
                 <p>Modern and long-lasting fragrance.</p>
 
-
-
                 <a class="btn" href="#payment">
-
                     Buy Now
+                </a>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- Payment Section -->
+
+    <section id="payment">
+
+        <div class="payment-box">
+
+            <h2>Choose Payment Method</h2>
+
+
+            <!-- Bank Transfer Button -->
+
+            <button class="payment-option" onclick="showBank()">
+                🏦 Bank Transfer
+            </button>
+
+
+            <!-- Cash On Delivery Button -->
+
+            <button class="payment-option" onclick="showCOD()">
+                🚚 Cash on Delivery
+            </button>
+
+
+            <!-- Bank Details -->
+
+            <div id="bankDetails" class="payment-details">
+
+                <h3>Bank Transfer Details</h3>
+
+                <p>
+                    <strong>Easypaisa:</strong>
+                    0314-2227059 (Rozina)
+                </p>
+
+                <p>
+                    <strong>JazzCash:</strong>
+                    0371-1216923 (Niaz ullah)
+                </p>
+
+                <p>
+                    Payment karne ke baad payment ka screenshot
+                    WhatsApp par send karein.
+                </p>
+
+                <a
+                    class="whatsapp-btn"
+                    href="https://wa.me/923711216923"
+                    target="_blank">
+
+                    Send Payment Screenshot
 
                 </a>
 
             </div>
 
 
+            <!-- Cash On Delivery Form -->
+
+            <form id="codForm">
+
+                <h3 style="text-align:center; margin-bottom:15px;">
+                    Cash on Delivery
+                </h3>
+
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required>
+
+
+                <label>Phone Number</label>
+                <input
+                    type="tel"
+                    name="phone"
+                    placeholder="03XXXXXXXXX"
+                    required>
+
+
+                <label>Country</label>
+                <input
+                    type="text"
+                    name="country"
+                    placeholder="Pakistan"
+                    required>
+
+
+                <label>City</label>
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="Enter your city"
+                    required>
+
+
+                <label>Full Address</label>
+                <input
+                    type="text"
+                    name="address"
+                    placeholder="Enter your complete address"
+                    required>
+
+
+                <label>Apartment / House No.</label>
+                <input
+                    type="text"
+                    name="apartment"
+                    placeholder="Apartment / House number"
+                    required>
+
+
+                <button
+                    type="submit"
+                    class="order-btn">
+
+                    Place COD Order
+
+                </button>
+
+            </form>
 
         </div>
-
-
-
-    </main>
-
-
-
-
-
-    <!-- Payment -->
-
-    <section id="payment">
-
-
-
-        <div class="payment-box">
-
-
-
-            <h2>Payment Details</h2>
-
-
-
-            <p>
-
-                <strong>Easypaisa:</strong>
-
-                0314-2227059 (Rozina)
-
-            </p>
-
-
-
-            <p>
-
-                <strong>JazzCash:</strong>
-
-                0371-1216923 (Niaz ullah)
-
-            </p>
-
-
-
-            <p>
-
-                Payment karne ke baad payment ka screenshot
-
-                WhatsApp par send karein.
-
-            </p>
-
-
-
-            <!-- WhatsApp Number Change Here -->
-
-            <a
-
-                class="whatsapp-btn"
-
-                href="https://wa.me/92 371-1216923"
-
-                target="_blank"
-
-            >
-
-                Send Payment Screenshot
-
-            </a>
-
-
-
-        </div>
-
-
 
     </section>
-
-
-
 
 
     <!-- About -->
 
-    <section id="about" style="text-align: center; padding: 40px 20px;">
-
-
+    <section
+        id="about"
+        style="text-align: center; padding: 40px 20px;">
 
         <h2>About Sami's</h2>
-
-
 
         <p style="margin-top: 10px;">
 
             Welcome to Sami's Fragrances.
-
             Discover fresh and elegant fragrances.
 
         </p>
 
-
-
     </section>
-
-
-
 
 
     <!-- Contact -->
 
-    <section id="contact" style="text-align: center; padding: 30px 20px;">
-
-
+    <section
+        id="contact"
+        style="text-align: center; padding: 30px 20px;">
 
         <h2>Contact Us</h2>
-
-
 
         <p style="margin-top: 10px;">
 
@@ -594,24 +480,53 @@
 
         </p>
 
-
-
     </section>
-
-
-
 
 
     <!-- Footer -->
 
     <footer>
 
-        <p>© 2026 Sami's Fragrances. All Rights Reserved.</p>
+        <p>
+            © 2026 Sami's Fragrances. All Rights Reserved.
+        </p>
 
     </footer>
 
 
+    <!-- JavaScript -->
+
+    <script>
+
+        function showBank() {
+
+            document.getElementById("bankDetails").style.display = "block";
+
+            document.getElementById("codForm").style.display = "none";
+
+        }
+
+
+        function showCOD() {
+
+            document.getElementById("codForm").style.display = "block";
+
+            document.getElementById("bankDetails").style.display = "none";
+
+        }
+
+
+        document.getElementById("codForm").addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            alert("Your Cash on Delivery order has been submitted!");
+
+        });
+
+    </script>
 
 </body>
 
 </html>
+```
