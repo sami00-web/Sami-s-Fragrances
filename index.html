@@ -1,2219 +1,1027 @@
-```html
-
 <!DOCTYPE html>
-
 <html lang="en">
-
-
 
 <head>
 
-
-
     <meta charset="UTF-8">
-
-
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
-
     <title>Sami's Fragrances</title>
-
-
-
-
 
     <style>
 
-
-
         * {
-
             box-sizing: border-box;
-
             margin: 0;
-
             padding: 0;
-
         }
-
-
-
-
 
         body {
-
             background-color: lightblue;
-
             font-family: Arial, sans-serif;
-
             color: #111;
-
         }
 
-
-
-
-
-        /* HEADER */
-
-
+        /* ================= HEADER ================= */
 
         header {
-
             background-color: darkblue;
-
             color: white;
-
             padding: 20px;
-
             text-align: center;
-
+            position: relative;
+            min-height: 190px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
 
+        /* LARGE LOGO ON LEFT */
 
-
-
+        .site-logo {
+            position: absolute;
+            left: 25px;
+            top: 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            border-radius: 50%;
+            z-index: 2;
+        }
 
         header h1 {
-
             margin-bottom: 15px;
-
+            margin-left: 170px;
+            margin-right: 20px;
         }
-
-
-
-
 
         nav {
-
             display: flex;
-
             justify-content: center;
-
             gap: 25px;
-
+            margin-left: 170px;
+            margin-right: 20px;
         }
-
-
-
-
 
         nav a {
-
             color: white;
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
-
-
 
         nav a:hover {
-
             color: lightgreen;
-
         }
 
-
-
-
-
-        /* MAIN */
-
-
+        /* ================= MAIN ================= */
 
         main {
-
             width: 90%;
-
             max-width: 1200px;
-
             margin: 40px auto;
-
         }
-
-
-
-
 
         main > h1 {
-
             text-align: center;
-
             margin-bottom: 30px;
-
         }
 
-
-
-
-
-        /* PRODUCTS */
-
-
+        /* ================= PRODUCTS ================= */
 
         .products {
-
             display: grid;
-
             grid-template-columns: repeat(3, 1fr);
-
             gap: 25px;
-
         }
-
-
-
-
 
         .card {
-
             background-color: white;
-
             padding: 20px;
-
             border-radius: 20px;
-
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-
             text-align: center;
-
             transition: 0.3s;
-
         }
-
-
-
-
 
         .card:hover {
-
             transform: translateY(-8px);
-
         }
-
-
-
-
 
         .card h2 {
-
             margin-bottom: 15px;
-
         }
-
-
-
-
 
         .card img {
-
             width: 100%;
-
             height: 250px;
-
             object-fit: cover;
-
             border-radius: 12px;
-
             margin-bottom: 20px;
-
         }
-
-
-
-
 
         .card p {
-
             margin-bottom: 15px;
-
             color: #555;
-
         }
-
-
-
-
 
         .price {
-
             font-size: 20px;
-
             font-weight: bold;
-
             color: darkgreen;
-
             margin-bottom: 15px;
-
         }
 
-
-
-
-
-        /* BUY BUTTON */
-
-
+        /* ================= BUY BUTTON ================= */
 
         .btn {
-
             display: inline-block;
-
             background-color: darkgreen;
-
             color: white;
-
             padding: 12px 25px;
-
             border: none;
-
             border-radius: 8px;
-
             cursor: pointer;
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
-
-
 
         .btn:hover {
-
             background-color: green;
-
         }
 
-
-
-
-
-        /* PAYMENT SECTION */
-
-
+        /* ================= PAYMENT ================= */
 
         #payment {
-
             text-align: center;
-
             padding: 40px 20px;
-
             margin-top: 40px;
-
             background-color: white;
-
         }
-
-
-
-
 
         .payment-box {
-
             max-width: 550px;
-
             margin: auto;
-
             padding: 25px;
-
             border-radius: 15px;
-
             background-color: lightblue;
-
         }
-
-
-
-
 
         .payment-box h2 {
-
             margin-bottom: 20px;
-
         }
 
-
-
-
-
-        /* PAYMENT BUTTONS */
-
-
+        /* ================= PAYMENT BUTTONS ================= */
 
         .payment-option {
-
             width: 100%;
-
             padding: 15px;
-
             margin: 10px 0;
-
             border: none;
-
             border-radius: 8px;
-
             background-color: darkgreen;
-
             color: white;
-
             font-size: 16px;
-
             font-weight: bold;
-
             cursor: pointer;
-
         }
-
-
-
-
 
         .payment-option:hover {
-
             background-color: green;
-
         }
 
-
-
-
-
-        /* CUSTOMER FORM */
-
-
+        /* ================= CUSTOMER FORM ================= */
 
         .customer-form {
-
             display: none;
-
             text-align: left;
-
             background-color: white;
-
             padding: 20px;
-
             margin-top: 15px;
-
             border-radius: 12px;
-
         }
-
-
-
-
 
         .customer-form h3 {
-
             text-align: center;
-
             margin-bottom: 15px;
-
         }
-
-
-
-
 
         .customer-form label {
-
             display: block;
-
             margin-top: 12px;
-
             margin-bottom: 5px;
-
             font-weight: bold;
-
         }
-
-
-
-
 
         .customer-form input {
-
             width: 100%;
-
             padding: 12px;
-
             border: 1px solid #ccc;
-
             border-radius: 7px;
-
             font-size: 15px;
-
         }
 
-
-
-
-
-        /* ORDER BUTTON */
-
-
+        /* ================= ORDER BUTTON ================= */
 
         .order-btn {
-
             width: 100%;
-
             margin-top: 20px;
-
             padding: 13px;
-
             border: none;
-
             border-radius: 8px;
-
             background-color: darkblue;
-
             color: white;
-
             font-size: 16px;
-
             font-weight: bold;
-
             cursor: pointer;
-
         }
-
-
-
-
 
         .order-btn:hover {
-
             background-color: blue;
-
         }
 
-
-
-
-
-        /* BANK PAYMENT */
-
-
+        /* ================= BANK PAYMENT ================= */
 
         #bankPayment {
-
             display: none;
-
             background-color: lightblue;
-
             padding: 20px;
-
             margin-top: 20px;
-
             border-radius: 12px;
-
             text-align: center;
-
         }
-
-
-
-
 
         #bankPayment h3 {
-
             margin-bottom: 15px;
-
         }
-
-
-
-
 
         #bankPayment p {
-
             margin: 12px 0;
-
         }
 
-
-
-
-
-        /* WHATSAPP BUTTON */
-
-
+        /* ================= WHATSAPP BUTTON ================= */
 
         .whatsapp-btn {
-
             display: inline-block;
-
             margin-top: 20px;
-
             background-color: #25D366;
-
             color: white;
-
             padding: 12px 25px;
-
             border-radius: 8px;
-
             text-decoration: none;
-
             font-weight: bold;
-
         }
-
-
-
-
 
         .whatsapp-btn:hover {
-
             background-color: #128C7E;
-
         }
 
-
-
-
-
-        /* ABOUT */
-
-
+        /* ================= ABOUT ================= */
 
         #about {
-
             text-align: center;
-
             padding: 40px 20px;
-
         }
-
-
-
-
 
         #about p {
-
             margin-top: 10px;
-
         }
 
-
-
-
-
-        /* CONTACT */
-
-
+        /* ================= CONTACT ================= */
 
         #contact {
-
             text-align: center;
-
             padding: 30px 20px;
-
         }
-
-
-
-
 
         #contact p {
-
             margin-top: 10px;
-
         }
 
-
-
-
-
-        /* FOOTER */
-
-
+        /* ================= FOOTER ================= */
 
         footer {
-
             background-color: darkblue;
-
             color: white;
-
             text-align: center;
-
             padding: 20px;
-
             margin-top: 50px;
-
         }
 
-
-
-
-
-        /* MOBILE */
-
-
+        /* ================= MOBILE ================= */
 
         @media (max-width: 800px) {
 
-
-
             .products {
-
                 grid-template-columns: 1fr;
-
             }
 
+            header {
+                min-height: 260px;
+                padding-top: 175px;
+            }
 
+            .site-logo {
+                width: 135px;
+                height: 135px;
+                left: 50%;
+                top: 15px;
+                transform: translateX(-50%);
+            }
 
-
+            header h1 {
+                margin-left: 0;
+                margin-right: 0;
+            }
 
             nav {
-
                 flex-direction: column;
-
                 gap: 10px;
-
+                margin-left: 0;
+                margin-right: 0;
             }
-
-
-
-
 
             .card img {
-
                 height: 280px;
-
             }
-
-
 
         }
 
-
-
     </style>
-
-
 
 </head>
 
-
-
-
-
 <body>
 
-
-
-
-
-    <!-- HEADER -->
-
-
+    <!-- ================= HEADER ================= -->
 
     <header>
 
-
+        <!-- WEBSITE LOGO -->
+        <img
+            src="logo.png"
+            alt="Sami's Fragrances Logo"
+            class="site-logo"
+        >
 
         <h1>Welcome To Sami's Fragrances</h1>
 
-
-
-
-
         <nav>
-
-
 
             <a href="#">Home</a>
 
-
-
             <a href="#about">About</a>
-
-
 
             <a href="#contact">Contact</a>
 
-
-
         </nav>
-
-
 
     </header>
 
 
-
-
-
-
-
-    <!-- PRODUCTS -->
-
-
+    <!-- ================= PRODUCTS ================= -->
 
     <main>
 
-
-
         <h1>Our Fragrances</h1>
-
-
-
-
 
         <div class="products">
 
 
-
-
-
             <!-- PRODUCT 1 -->
-
-
 
             <div class="card">
 
-
-
                 <h2>Refreshment</h2>
 
-
-
-
-
                 <img
-
                     src="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-
-                    alt="Refreshment Perfume">
-
-
-
-
+                    alt="Refreshment Perfume"
+                >
 
                 <p>
-
                     Fresh and refreshing fragrance.
-
                 </p>
 
-
-
-
-
                 <div class="price">
-
                     RS 999
-
                 </div>
 
-
-
-
-
                 <a
-
                     class="btn"
-
                     href="#payment"
-
-                    onclick="selectProduct('Refreshment', '999')">
-
-
-
+                    onclick="selectProduct('Refreshment', '999')"
+                >
                     Buy Now
-
-
-
                 </a>
 
-
-
             </div>
-
-
-
-
-
 
 
             <!-- PRODUCT 2 -->
 
-
-
             <div class="card">
-
-
 
                 <h2>Fragrances</h2>
 
-
-
-
-
                 <img
-
                     src="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-
-                    alt="Fragrance Perfume">
-
-
-
-
+                    alt="Fragrance Perfume"
+                >
 
                 <p>
-
                     Elegant fragrance for everyday use.
-
                 </p>
 
-
-
-
-
                 <div class="price">
-
                     RS 999
-
                 </div>
 
-
-
-
-
                 <a
-
                     class="btn"
-
                     href="#payment"
-
-                    onclick="selectProduct('Fragrances', '999')">
-
-
-
+                    onclick="selectProduct('Fragrances', '999')"
+                >
                     Buy Now
-
-
-
                 </a>
 
-
-
             </div>
-
-
-
-
-
 
 
             <!-- PRODUCT 3 -->
 
-
-
             <div class="card">
-
-
 
                 <h2>Mid Fresher</h2>
 
-
-
-
-
                 <img
-
                     src="https://aromaconcepts.pk/cdn/shop/products/blue_Perfume_-_Bleu_de_Chanel_Chanel.jpg?v=1787123983&width=1946"
-
-                    alt="Mid Fresher Perfume">
-
-
-
-
+                    alt="Mid Fresher Perfume"
+                >
 
                 <p>
-
                     Modern and long-lasting fragrance.
-
                 </p>
 
-
-
-
-
                 <div class="price">
-
                     RS 999
-
                 </div>
 
-
-
-
-
                 <a
-
                     class="btn"
-
                     href="#payment"
-
-                    onclick="selectProduct('Mid Fresher', '999')">
-
-
-
+                    onclick="selectProduct('Mid Fresher', '999')"
+                >
                     Buy Now
-
-
-
                 </a>
-
-
 
             </div>
 
-
-
-
-
         </div>
-
-
 
     </main>
 
 
-
-
-
-
-
-    <!-- PAYMENT SECTION -->
-
-
+    <!-- ================= PAYMENT SECTION ================= -->
 
     <section id="payment">
 
-
-
-
-
         <div class="payment-box">
-
-
-
-
 
             <h2>Choose Payment Method</h2>
 
 
-
-
-
             <!-- SELECTED PRODUCT -->
 
-
-
             <div
-
                 id="selectedProduct"
-
                 style="
-
                     background:white;
-
                     padding:12px;
-
                     border-radius:8px;
-
                     margin-bottom:15px;
-
                     font-weight:bold;
-
-                ">
-
-
-
+                "
+            >
                 Product: Please select a product
-
-
-
             </div>
-
-
-
-
-
 
 
             <!-- BANK TRANSFER -->
 
-
-
             <button
-
                 class="payment-option"
-
-                onclick="showBankTransfer()">
-
-
-
+                onclick="showBankTransfer()"
+            >
                 🏦 Bank Transfer
-
-
-
             </button>
-
-
-
-
-
 
 
             <!-- CASH ON DELIVERY -->
 
-
-
             <button
-
                 class="payment-option"
-
-                onclick="showCOD()">
-
-
-
+                onclick="showCOD()"
+            >
                 🚚 Cash on Delivery
-
-
-
             </button>
-
-
-
-
-
 
 
             <!-- BANK TRANSFER CUSTOMER FORM -->
 
-
-
             <form
-
                 id="bankCustomerForm"
-
-                class="customer-form">
-
-
-
-
+                class="customer-form"
+            >
 
                 <h3>
-
                     Customer Details
-
                 </h3>
 
 
-
-
-
                 <label>
-
                     Full Name
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="bankName"
-
                     type="text"
-
                     placeholder="Enter your name"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Phone Number
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="bankPhone"
-
                     type="tel"
-
                     placeholder="03XXXXXXXXX"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Country
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="bankCountry"
-
                     type="text"
-
                     placeholder="Pakistan"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     City
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="bankCity"
-
                     type="text"
-
                     placeholder="Enter your city"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Full Address
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="bankAddress"
-
                     type="text"
-
                     placeholder="Enter your complete address"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Apartment / House No.
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="bankApartment"
-
                     type="text"
-
                     placeholder="Apartment / House number"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <button
-
                     type="submit"
-
-                    class="order-btn">
-
-
-
+                    class="order-btn"
+                >
                     Continue to Payment
-
-
-
                 </button>
-
-
-
-
-
 
 
                 <!-- BANK PAYMENT DETAILS -->
 
-
-
                 <div id="bankPayment">
 
-
-
-
-
                     <h3>
-
                         Payment Details
-
                     </h3>
 
-
-
-
-
                     <p>
-
                         <strong>Easypaisa:</strong>
-
                         0314-2227059 (Rozina)
-
                     </p>
 
-
-
-
-
                     <p>
-
                         <strong>JazzCash:</strong>
-
                         0371-1216923 (Niaz ullah)
-
                     </p>
-
-
-
-
 
                     <p>
-
                         Payment karne ke baad payment ka screenshot
-
                         WhatsApp par send karein.
-
                     </p>
-
-
-
-
 
                     <a
-
                         id="paymentWhatsApp"
-
                         class="whatsapp-btn"
-
                         href="#"
-
-                        target="_blank">
-
-
-
+                        target="_blank"
+                    >
                         📱 Send Payment Screenshot
-
-
-
                     </a>
-
-
 
                 </div>
 
-
-
             </form>
-
-
-
-
-
 
 
             <!-- COD FORM -->
 
-
-
             <form
-
                 id="codForm"
-
-                class="customer-form">
-
-
-
-
+                class="customer-form"
+            >
 
                 <h3>
-
                     Cash on Delivery
-
                 </h3>
 
 
-
-
-
-
-
                 <label>
-
                     Full Name
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="codName"
-
                     type="text"
-
                     placeholder="Enter your name"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Phone Number
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="codPhone"
-
                     type="tel"
-
                     placeholder="03XXXXXXXXX"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Country
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="codCountry"
-
                     type="text"
-
                     placeholder="Pakistan"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     City
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="codCity"
-
                     type="text"
-
                     placeholder="Enter your city"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Full Address
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="codAddress"
-
                     type="text"
-
                     placeholder="Enter your complete address"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <label>
-
                     Apartment / House No.
-
                 </label>
 
-
-
-
-
                 <input
-
                     id="codApartment"
-
                     type="text"
-
                     placeholder="Apartment / House number"
-
-                    required>
-
-
-
-
-
+                    required
+                >
 
 
                 <button
-
                     type="submit"
-
-                    class="order-btn">
-
-
-
+                    class="order-btn"
+                >
                     📱 Place COD Order on WhatsApp
-
-
-
                 </button>
-
-
 
             </form>
 
-
-
-
-
         </div>
-
-
 
     </section>
 
 
-
-
-
-
-
-    <!-- ABOUT -->
-
-
+    <!-- ================= ABOUT ================= -->
 
     <section id="about">
 
-
-
         <h2>
-
             About Sami's
-
         </h2>
 
-
-
-
-
         <p>
-
             Welcome to Sami's Fragrances.
-
             Discover fresh and elegant fragrances.
-
         </p>
-
-
 
     </section>
 
 
-
-
-
-
-
-    <!-- CONTACT -->
-
-
+    <!-- ================= CONTACT ================= -->
 
     <section id="contact">
 
-
-
         <h2>
-
             Contact Us
-
         </h2>
 
-
-
-
-
         <p>
-
             Email: niazisami138@gmail.com
-
         </p>
-
-
 
     </section>
 
 
-
-
-
-
-
-    <!-- FOOTER -->
-
-
+    <!-- ================= FOOTER ================= -->
 
     <footer>
 
-
-
         <p>
-
             © 2026 Sami's Fragrances. All Rights Reserved.
-
         </p>
-
-
 
     </footer>
 
 
-
-
-
-
-
-    <!-- JAVASCRIPT -->
-
-
+    <!-- ================= JAVASCRIPT ================= -->
 
     <script>
 
-
-
-
-
-        /* SELECTED PRODUCT */
-
-
+        /* ================= SELECTED PRODUCT ================= */
 
         let selectedProductName = "";
-
         let selectedProductPrice = "";
-
-
-
-
 
         function selectProduct(productName, productPrice) {
 
-
-
             selectedProductName = productName;
-
-
 
             selectedProductPrice = productPrice;
 
-
-
-
-
             document.getElementById("selectedProduct").innerHTML =
-
                 "Product: " +
-
                 productName +
-
                 " — RS " +
-
                 productPrice;
-
-
 
         }
 
 
-
-
-
-
-
-        /* BANK TRANSFER */
-
-
+        /* ================= BANK TRANSFER ================= */
 
         function showBankTransfer() {
 
-
-
             document.getElementById("bankCustomerForm").style.display =
-
                 "block";
 
-
-
-
-
             document.getElementById("codForm").style.display =
-
                 "none";
-
-
-
-
 
             document.getElementById("bankPayment").style.display =
-
                 "none";
-
-
 
         }
 
 
-
-
-
-
-
-        /* CASH ON DELIVERY */
-
-
+        /* ================= CASH ON DELIVERY ================= */
 
         function showCOD() {
 
-
-
             document.getElementById("codForm").style.display =
-
                 "block";
 
-
-
-
-
             document.getElementById("bankCustomerForm").style.display =
-
                 "none";
-
-
 
         }
 
 
-
-
-
-
-
-        /* BANK TRANSFER FORM */
-
-
+        /* ================= BANK TRANSFER FORM ================= */
 
         document
-
             .getElementById("bankCustomerForm")
-
             .addEventListener("submit", function(event) {
-
-
 
                 event.preventDefault();
 
 
-
-
-
                 let name =
-
                     document.getElementById("bankName").value;
 
-
-
-
-
                 let phone =
-
                     document.getElementById("bankPhone").value;
 
-
-
-
-
                 let country =
-
                     document.getElementById("bankCountry").value;
 
-
-
-
-
                 let city =
-
                     document.getElementById("bankCity").value;
 
-
-
-
-
                 let address =
-
                     document.getElementById("bankAddress").value;
 
-
-
-
-
                 let apartment =
-
                     document.getElementById("bankApartment").value;
-
-
-
-
-
 
 
                 let message =
 
-
-
                     "🛍️ NEW ORDER - SAMI'S FRAGRANCES\n\n" +
 
-
-
                     "Product: " +
-
                     selectedProductName +
-
                     "\n" +
 
-
-
                     "Price: RS " +
-
                     selectedProductPrice +
-
                     "\n\n" +
-
-
 
                     "Payment Method: Bank Transfer\n\n" +
 
-
-
                     "Name: " +
-
                     name +
-
                     "\n" +
-
-
 
                     "Phone: " +
-
                     phone +
-
                     "\n" +
-
-
 
                     "Country: " +
-
                     country +
-
                     "\n" +
-
-
 
                     "City: " +
-
                     city +
-
                     "\n" +
-
-
 
                     "Address: " +
-
                     address +
-
                     "\n" +
 
-
-
                     "Apartment / House No: " +
-
                     apartment;
-
-
-
-
-
 
 
                 let whatsappURL =
 
-
-
                     "https://wa.me/923711216923?text=" +
 
-
-
                     encodeURIComponent(message);
-
-
-
-
-
 
 
                 /* WhatsApp button */
 
-
-
                 document
-
                     .getElementById("paymentWhatsApp")
-
                     .href = whatsappURL;
-
-
-
-
-
 
 
                 /* Payment details show */
 
-
-
                 document
-
                     .getElementById("bankPayment")
-
                     .style.display = "block";
-
-
 
             });
 
 
-
-
-
-
-
-        /* CASH ON DELIVERY FORM */
-
-
+        /* ================= CASH ON DELIVERY FORM ================= */
 
         document
-
             .getElementById("codForm")
-
             .addEventListener("submit", function(event) {
-
-
 
                 event.preventDefault();
 
 
-
-
-
                 let name =
-
                     document.getElementById("codName").value;
 
-
-
-
-
                 let phone =
-
                     document.getElementById("codPhone").value;
 
-
-
-
-
                 let country =
-
                     document.getElementById("codCountry").value;
 
-
-
-
-
                 let city =
-
                     document.getElementById("codCity").value;
 
-
-
-
-
                 let address =
-
                     document.getElementById("codAddress").value;
 
-
-
-
-
                 let apartment =
-
                     document.getElementById("codApartment").value;
-
-
-
-
-
 
 
                 let message =
 
-
-
                     "🛍️ NEW ORDER - SAMI'S FRAGRANCES\n\n" +
 
-
-
                     "Product: " +
-
                     selectedProductName +
-
                     "\n" +
 
-
-
                     "Price: RS " +
-
                     selectedProductPrice +
-
                     "\n\n" +
-
-
 
                     "Payment Method: Cash on Delivery\n\n" +
 
-
-
                     "Name: " +
-
                     name +
-
                     "\n" +
-
-
 
                     "Phone: " +
-
                     phone +
-
                     "\n" +
-
-
 
                     "Country: " +
-
                     country +
-
                     "\n" +
-
-
 
                     "City: " +
-
                     city +
-
                     "\n" +
-
-
 
                     "Address: " +
-
                     address +
-
                     "\n" +
 
-
-
                     "Apartment / House No: " +
-
                     apartment;
-
-
-
-
-
 
 
                 let whatsappURL =
 
-
-
                     "https://wa.me/923711216923?text=" +
-
-
 
                     encodeURIComponent(message);
 
 
-
-
-
-
-
                 /* WhatsApp open */
 
-
-
                 window.open(
-
                     whatsappURL,
-
                     "_blank"
-
                 );
-
-
 
             });
 
-
-
-
-
     </script>
-
-
-
-
 
 </body>
 
-
-
 </html>
-
-```
