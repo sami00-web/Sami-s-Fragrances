@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sami Niazi | Graphic Designer Portfolio</title>
 
 <style>
@@ -66,12 +65,12 @@ nav a:hover {
     margin: 15px 0;
 }
 
-.hero h1 span {
+.hero h1 span,
+.hero h2 {
     color: #38bdf8;
 }
 
 .hero h2 {
-    color: #38bdf8;
     margin-bottom: 20px;
 }
 
@@ -110,11 +109,13 @@ nav a:hover {
     background: #17243b;
 }
 
-.upload {
+.upload,
+.project-upload {
     display: block;
     margin: 18px auto;
     color: #38bdf8;
     cursor: pointer;
+    text-align: center;
 }
 
 section {
@@ -130,8 +131,6 @@ section {
 .section-title span {
     color: #38bdf8;
 }
-
-/* ABOUT */
 
 .about p {
     color: #b8c5d8;
@@ -150,8 +149,6 @@ section {
     margin: 25px auto;
     border: 3px solid #38bdf8;
 }
-
-/* SKILLS */
 
 .skills {
     display: grid;
@@ -183,8 +180,6 @@ section {
     line-height: 1.6;
 }
 
-/* PROJECTS */
-
 .projects {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -200,19 +195,10 @@ section {
     background: #17243b;
 }
 
-.project-upload {
-    display: block;
-    color: #38bdf8;
-    cursor: pointer;
-    margin: 15px auto;
-}
-
 .project-title {
     color: #38bdf8;
     margin: 10px 0;
 }
-
-/* CONTACT */
 
 .contact {
     text-align: center;
@@ -227,8 +213,6 @@ section {
     color: #38bdf8;
 }
 
-/* FOOTER */
-
 footer {
     background: #101a30;
     text-align: center;
@@ -237,7 +221,6 @@ footer {
 }
 
 @media(max-width: 750px) {
-
     header {
         flex-direction: column;
         gap: 18px;
@@ -273,8 +256,6 @@ footer {
 
 <body>
 
-<!-- HEADER -->
-
 <header>
     <div class="logo">SAMI.</div>
 
@@ -287,8 +268,7 @@ footer {
     </nav>
 </header>
 
-
-<!-- HOME SECTION -->
+<!-- HOME -->
 
 <div class="hero" id="home">
 
@@ -325,14 +305,14 @@ footer {
         </label>
 
         <input type="file" id="photoUpload"
-        accept="image/*" hidden>
+        accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+        hidden>
 
     </div>
 
 </div>
 
-
-<!-- ABOUT SECTION -->
+<!-- ABOUT -->
 
 <section class="about" id="about">
 
@@ -350,7 +330,8 @@ footer {
     </label>
 
     <input type="file" id="aboutUpload"
-    accept="image/*" hidden>
+    accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+    hidden>
 
     <p>
         My name is Sami Niazi. I am passionate
@@ -364,8 +345,7 @@ footer {
 
 </section>
 
-
-<!-- SKILLS SECTION -->
+<!-- SKILLS -->
 
 <section id="skills">
 
@@ -392,8 +372,7 @@ footer {
 
 </section>
 
-
-<!-- PROJECTS SECTION -->
+<!-- PROJECTS -->
 
 <section id="projects">
 
@@ -402,8 +381,6 @@ footer {
     </h2>
 
     <div class="projects">
-
-        <!-- PROJECT 1 -->
 
         <div class="card">
 
@@ -419,14 +396,12 @@ footer {
             </label>
 
             <input type="file" id="upload1"
-            accept="image/*" hidden>
+            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+            hidden>
 
             <p>My creative graphic design work.</p>
 
         </div>
-
-
-        <!-- PROJECT 2 -->
 
         <div class="card">
 
@@ -442,14 +417,12 @@ footer {
             </label>
 
             <input type="file" id="upload2"
-            accept="image/*" hidden>
+            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+            hidden>
 
             <p>My professional design project.</p>
 
         </div>
-
-
-        <!-- PROJECT 3 -->
 
         <div class="card">
 
@@ -465,7 +438,8 @@ footer {
             </label>
 
             <input type="file" id="upload3"
-            accept="image/*" hidden>
+            accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+            hidden>
 
             <p>My latest creative work.</p>
 
@@ -475,8 +449,7 @@ footer {
 
 </section>
 
-
-<!-- CONTACT SECTION -->
+<!-- CONTACT -->
 
 <section class="contact" id="contact">
 
@@ -496,21 +469,19 @@ footer {
 
 </section>
 
-
-<!-- FOOTER -->
-
 <footer>
-
-    <p>
-        © 2026 Sami Niazi | All Rights Reserved
-    </p>
-
+    <p>© 2026 Sami Niazi | All Rights Reserved</p>
 </footer>
 
-
-<!-- IMAGE UPLOAD JAVASCRIPT -->
+<!-- IMAGE ONLY UPLOAD SYSTEM -->
 
 <script>
+
+const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+];
 
 function uploadImage(inputId, imageId) {
 
@@ -521,36 +492,41 @@ function uploadImage(inputId, imageId) {
 
         const file = this.files[0];
 
-        if (file && file.type.startsWith("image/")) {
+        if (!file) return;
 
-            const reader = new FileReader();
+        if (!allowedTypes.includes(file.type)) {
 
-            reader.onload = function(e) {
-                image.src = e.target.result;
-            };
+            alert(
+                "Only JPG, JPEG, PNG and WEBP images are allowed!"
+            );
 
-            reader.readAsDataURL(file);
-
-        } else if (file) {
-            alert("Please select a valid image.");
+            this.value = "";
+            return;
         }
+
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+
+            image.src = e.target.result;
+
+        };
+
+        reader.readAsDataURL(file);
 
     });
 
 }
 
-
-// PROFILE PICTURE
+// PROFILE
 
 uploadImage("photoUpload", "profilePic");
 
-
-// ABOUT PICTURE
+// ABOUT
 
 uploadImage("aboutUpload", "aboutPic");
 
-
-// PROJECT PICTURES
+// PROJECTS
 
 uploadImage("upload1", "project1");
 
