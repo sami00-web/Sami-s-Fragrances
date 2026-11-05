@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Portfolio | Hassan</title>
+
+<title>Sami Niazi | Graphic Designer Portfolio</title>
 
 <style>
 * {
@@ -40,8 +41,7 @@ header {
 nav a {
     color: white;
     text-decoration: none;
-    margin-left: 22px;
-    transition: 0.3s;
+    margin-left: 20px;
 }
 
 nav a:hover {
@@ -62,8 +62,8 @@ nav a:hover {
 }
 
 .hero h1 {
-    font-size: 48px;
-    margin-bottom: 15px;
+    font-size: 50px;
+    margin: 15px 0;
 }
 
 .hero h1 span {
@@ -131,6 +131,8 @@ section {
     color: #38bdf8;
 }
 
+/* ABOUT */
+
 .about p {
     color: #b8c5d8;
     line-height: 1.9;
@@ -139,7 +141,19 @@ section {
     margin: auto;
 }
 
-.skills, .projects {
+.about-image {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+    display: block;
+    margin: 25px auto;
+    border: 3px solid #38bdf8;
+}
+
+/* SKILLS */
+
+.skills {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
@@ -169,13 +183,36 @@ section {
     line-height: 1.6;
 }
 
+/* PROJECTS */
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
 .project-image {
     width: 100%;
-    height: 150px;
+    height: 180px;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 15px;
+    background: #17243b;
 }
+
+.project-upload {
+    display: block;
+    color: #38bdf8;
+    cursor: pointer;
+    margin: 15px auto;
+}
+
+.project-title {
+    color: #38bdf8;
+    margin: 10px 0;
+}
+
+/* CONTACT */
 
 .contact {
     text-align: center;
@@ -186,6 +223,12 @@ section {
     margin: 15px;
 }
 
+.contact a {
+    color: #38bdf8;
+}
+
+/* FOOTER */
+
 footer {
     background: #101a30;
     text-align: center;
@@ -194,6 +237,7 @@ footer {
 }
 
 @media(max-width: 750px) {
+
     header {
         flex-direction: column;
         gap: 18px;
@@ -216,7 +260,7 @@ footer {
     }
 
     .hero h1 {
-        font-size: 35px;
+        font-size: 36px;
     }
 
     .profile img {
@@ -229,8 +273,10 @@ footer {
 
 <body>
 
+<!-- HEADER -->
+
 <header>
-    <div class="logo">MyPortfolio.</div>
+    <div class="logo">SAMI.</div>
 
     <nav>
         <a href="#home">Home</a>
@@ -241,148 +287,277 @@ footer {
     </nav>
 </header>
 
-<!-- HOME -->
+
+<!-- HOME SECTION -->
+
 <div class="hero" id="home">
 
     <div class="hero-content">
+
         <h2>Hello, I'm</h2>
-        <h1>Hassan <span>Niazi</span></h1>
-        <h2>Web Developer & Creative Designer</h2>
+
+        <h1>Sami <span>Niazi</span></h1>
+
+        <h2>Graphic Designer</h2>
 
         <p>
             Welcome to my personal portfolio!
-            I love creating modern websites,
-            learning new technologies and
-            turning creative ideas into reality.
+            I am a creative graphic designer.
+            I love creating professional designs,
+            attractive thumbnails, logos and
+            social media graphics.
         </p>
 
         <a href="#projects" class="btn">View My Work</a>
+
         <a href="#contact" class="btn">Contact Me</a>
+
     </div>
 
     <div class="profile">
+
         <img id="profilePic"
-        src="https://placehold.co/300x300/17243b/38bdf8?text=Your+Photo"
-        alt="My Profile">
+        src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
+        alt="Sami Profile">
 
         <label class="upload" for="photoUpload">
-            📷 Choose Your Picture
+            📷 Upload Profile Picture
         </label>
 
         <input type="file" id="photoUpload"
         accept="image/*" hidden>
+
     </div>
 
 </div>
 
-<!-- ABOUT -->
+
+<!-- ABOUT SECTION -->
+
 <section class="about" id="about">
-    <h2 class="section-title">About <span>Me</span></h2>
+
+    <h2 class="section-title">
+        About <span>Me</span>
+    </h2>
+
+    <img id="aboutPic"
+    class="about-image"
+    src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
+    alt="About Sami">
+
+    <label class="upload" for="aboutUpload">
+        📷 Upload About Picture
+    </label>
+
+    <input type="file" id="aboutUpload"
+    accept="image/*" hidden>
 
     <p>
-        My name is Hassan. I am passionate about
-        web development and creative design.
-        I enjoy learning HTML, CSS and JavaScript.
-        My goal is to build beautiful and useful
-        websites and improve my skills every day.
+        My name is Sami Niazi. I am passionate
+        about Graphic Designing and creative work.
+        I enjoy making professional thumbnails,
+        logos, banners and social media designs.
+
+        My goal is to improve my creativity
+        and become a professional graphic designer.
     </p>
+
 </section>
 
-<!-- SKILLS -->
+
+<!-- SKILLS SECTION -->
+
 <section id="skills">
-    <h2 class="section-title">My <span>Skills</span></h2>
+
+    <h2 class="section-title">
+        My <span>Skills</span>
+    </h2>
 
     <div class="skills">
-        <div class="card">
-            <h3>HTML</h3>
-            <p>Creating website structures.</p>
-        </div>
 
         <div class="card">
-            <h3>CSS</h3>
-            <p>Modern styling and responsive designs.</p>
+
+            <h3>GRAPHIC DESIGNING</h3>
+
+            <p>
+                Professional thumbnails,
+                logo design, banners,
+                social media posts and
+                creative graphic designs.
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>JavaScript</h3>
-            <p>Interactive website features.</p>
-        </div>
-
-        <div class="card">
-            <h3>Graphic Design</h3>
-            <p>Creative graphics and visual content.</p>
-        </div>
     </div>
+
 </section>
 
-<!-- PROJECTS -->
+
+<!-- PROJECTS SECTION -->
+
 <section id="projects">
-    <h2 class="section-title">My <span>Projects</span></h2>
+
+    <h2 class="section-title">
+        My <span>Projects</span>
+    </h2>
 
     <div class="projects">
 
-        <div class="card">
-            <img class="project-image"
-            src="https://placehold.co/400x200/17243b/38bdf8?text=Perfume+Store"
-            alt="Perfume Store">
-            <h3>Sami's Fragrances</h3>
-            <p>My online perfume store website.</p>
-        </div>
+        <!-- PROJECT 1 -->
 
         <div class="card">
+
             <img class="project-image"
-            src="https://placehold.co/400x200/17243b/38bdf8?text=Web+Design"
-            alt="Web Design">
-            <h3>Web Design</h3>
-            <p>Creative and responsive web designs.</p>
+            id="project1"
+            src="https://placehold.co/400x200/17243b/38bdf8?text=Project+1"
+            alt="Project 1">
+
+            <h3 class="project-title">Project 1</h3>
+
+            <label class="project-upload" for="upload1">
+                📷 Upload Project Picture
+            </label>
+
+            <input type="file" id="upload1"
+            accept="image/*" hidden>
+
+            <p>My creative graphic design work.</p>
+
         </div>
 
+
+        <!-- PROJECT 2 -->
+
         <div class="card">
+
             <img class="project-image"
-            src="https://placehold.co/400x200/17243b/38bdf8?text=Creative+Work"
-            alt="Creative Work">
-            <h3>Creative Projects</h3>
-            <p>My creative digital work and experiments.</p>
+            id="project2"
+            src="https://placehold.co/400x200/17243b/38bdf8?text=Project+2"
+            alt="Project 2">
+
+            <h3 class="project-title">Project 2</h3>
+
+            <label class="project-upload" for="upload2">
+                📷 Upload Project Picture
+            </label>
+
+            <input type="file" id="upload2"
+            accept="image/*" hidden>
+
+            <p>My professional design project.</p>
+
+        </div>
+
+
+        <!-- PROJECT 3 -->
+
+        <div class="card">
+
+            <img class="project-image"
+            id="project3"
+            src="https://placehold.co/400x200/17243b/38bdf8?text=Project+3"
+            alt="Project 3">
+
+            <h3 class="project-title">Project 3</h3>
+
+            <label class="project-upload" for="upload3">
+                📷 Upload Project Picture
+            </label>
+
+            <input type="file" id="upload3"
+            accept="image/*" hidden>
+
+            <p>My latest creative work.</p>
+
         </div>
 
     </div>
+
 </section>
 
-<!-- CONTACT -->
+
+<!-- CONTACT SECTION -->
+
 <section class="contact" id="contact">
-    <h2 class="section-title">Contact <span>Me</span></h2>
+
+    <h2 class="section-title">
+        Contact <span>Me</span>
+    </h2>
 
     <p>Email: your@email.com</p>
+
     <p>WhatsApp: Your Number</p>
+
     <p>GitHub: github.com/yourusername</p>
 
     <a href="mailto:your@email.com" class="btn">
         Send Me an Email
     </a>
+
 </section>
 
+
+<!-- FOOTER -->
+
 <footer>
-    <p>© 2026 Hassan | All Rights Reserved</p>
+
+    <p>
+        © 2026 Sami Niazi | All Rights Reserved
+    </p>
+
 </footer>
 
+
+<!-- IMAGE UPLOAD JAVASCRIPT -->
+
 <script>
-// Profile Picture Upload
-const photoUpload = document.getElementById("photoUpload");
-const profilePic = document.getElementById("profilePic");
 
-photoUpload.addEventListener("change", function() {
-    const file = this.files[0];
+function uploadImage(inputId, imageId) {
 
-    if (file && file.type.startsWith("image/")) {
-        const reader = new FileReader();
+    const input = document.getElementById(inputId);
+    const image = document.getElementById(imageId);
 
-        reader.onload = function(e) {
-            profilePic.src = e.target.result;
-        };
+    input.addEventListener("change", function() {
 
-        reader.readAsDataURL(file);
-    }
-});
+        const file = this.files[0];
+
+        if (file && file.type.startsWith("image/")) {
+
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                image.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+
+        } else if (file) {
+            alert("Please select a valid image.");
+        }
+
+    });
+
+}
+
+
+// PROFILE PICTURE
+
+uploadImage("photoUpload", "profilePic");
+
+
+// ABOUT PICTURE
+
+uploadImage("aboutUpload", "aboutPic");
+
+
+// PROJECT PICTURES
+
+uploadImage("upload1", "project1");
+
+uploadImage("upload2", "project2");
+
+uploadImage("upload3", "project3");
+
 </script>
 
 </body>
