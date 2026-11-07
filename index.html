@@ -4,7 +4,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Sami Niazi | Graphic Designer Portfolio</title>
 
 <style>
@@ -21,8 +20,6 @@ body {
     color: white;
 }
 
-/* HEADER */
-
 header {
     display: flex;
     justify-content: space-between;
@@ -31,7 +28,7 @@ header {
     background: #101a30;
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 10;
 }
 
 .logo {
@@ -66,7 +63,7 @@ nav a:hover {
     object-fit: cover;
     border: 2px solid #38bdf8;
     border-radius: 8px;
-    margin: auto;
+    margin: 0 auto;
     background: #17243b;
 }
 
@@ -80,8 +77,6 @@ nav a:hover {
 body.admin-mode .banner-upload {
     display: inline-block;
 }
-
-/* HERO */
 
 .hero {
     min-height: 75vh;
@@ -134,7 +129,9 @@ body.admin-mode .banner-upload {
     margin: 5px;
 }
 
-/* PROFILE */
+.btn:hover {
+    background: #0284c7;
+}
 
 .profile {
     text-align: center;
@@ -158,8 +155,6 @@ body.admin-mode .banner-upload {
     text-align: center;
 }
 
-/* SECTIONS */
-
 section {
     padding: 75px 10%;
 }
@@ -173,8 +168,6 @@ section {
 .section-title span {
     color: #38bdf8;
 }
-
-/* ABOUT */
 
 .about p {
     text-align: center;
@@ -193,29 +186,19 @@ section {
     background: #17243b;
 }
 
-/* GALLERY */
-
-.gallery {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-}
-
-/* ALL CARDS WITH BORDER */
-
 .card {
     background: #111d33;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
-    border: 2px solid #38bdf8;
+    border: 1px solid #243653;
+    transition: .3s;
     min-width: 0;
-    transition: 0.3s;
 }
 
 .card:hover {
-    border-color: #ffffff;
-    transform: translateY(-3px);
+    transform: translateY(-4px);
+    border-color: #38bdf8;
 }
 
 .card h3 {
@@ -223,7 +206,17 @@ section {
     margin-bottom: 12px;
 }
 
-/* GENERAL PROJECT IMAGE */
+.gallery {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
+.gallery .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
 
 .project-image {
     width: 100%;
@@ -232,57 +225,51 @@ section {
     border-radius: 8px;
     margin-bottom: 15px;
     background: #17243b;
-    border: 2px solid #38bdf8;
+    border: 1px solid #243653;
     cursor: zoom-in;
-    display: block;
 }
 
-/* THUMBNAIL */
+/* THUMBNAILS */
 
 #thumbnailGallery .card {
     padding: 12px;
-    border: 2px solid #38bdf8;
-    background: #111d33;
+    border: none;
+    background: transparent;
+    box-shadow: none;
 }
 
 #thumbnailGallery .project-image {
+    display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     height: auto;
-    object-fit: contain;
-    border: 2px solid #38bdf8;
+    object-fit: cover;
+    border: none;
+    border-radius: 0;
+    margin: 0 0 12px;
 }
 
-/* POSTER */
-
-.poster-grid .card {
-    border: 2px solid #38bdf8;
-}
+/* POSTERS */
 
 .poster-grid .project-image {
     height: 260px;
-    object-fit: contain;
     border: 2px solid #38bdf8;
+    border-radius: 8px;
     padding: 3px;
 }
 
-/* LOGO */
-
-.logo-grid .card {
-    border: 2px solid #38bdf8;
-}
+/* LOGOS */
 
 .logo-grid .project-image {
     width: 170px;
     height: 170px;
-    aspect-ratio: 1;
+    aspect-ratio: 1 / 1;
     object-fit: contain;
     border: 2px solid #38bdf8;
     border-radius: 50%;
     margin: 0 auto 15px;
+    background: #17243b;
 }
-
-/* UPLOAD BUTTONS */
 
 .upload-actions {
     display: flex;
@@ -293,7 +280,7 @@ section {
 
 .change-btn {
     background: #243653;
-    color: white;
+    color: #fff;
     border: 1px solid #38bdf8;
     padding: 9px 14px;
     border-radius: 6px;
@@ -301,7 +288,7 @@ section {
 }
 
 .change-btn:hover {
-    background: #0ea5e9;
+    background: #0c4a6e;
 }
 
 .admin-only {
@@ -311,8 +298,6 @@ section {
 body.admin-mode .admin-only {
     display: inline-block !important;
 }
-
-/* CONTACT */
 
 .contact {
     text-align: center;
@@ -326,8 +311,6 @@ body.admin-mode .admin-only {
     color: #38bdf8;
 }
 
-/* FOOTER */
-
 footer {
     background: #101a30;
     text-align: center;
@@ -335,13 +318,13 @@ footer {
     color: #9caec6;
 }
 
-/* IMAGE VIEWER */
+/* FULL SCREEN IMAGE */
 
 .image-viewer {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,.95);
+    background: rgba(0, 0, 0, .95);
     z-index: 9999;
     justify-content: center;
     align-items: center;
@@ -362,8 +345,8 @@ footer {
     position: absolute;
     top: 20px;
     right: 30px;
-    background: #e11d48;
     color: white;
+    background: #e11d48;
     border: none;
     border-radius: 50%;
     width: 45px;
@@ -372,19 +355,7 @@ footer {
     cursor: pointer;
 }
 
-/* STATUS */
-
-.status {
-    text-align: center;
-    color: #38bdf8;
-    margin: 15px;
-    min-height: 25px;
-}
-
-/* MOBILE */
-
 @media(max-width:750px) {
-
     header {
         flex-direction: column;
         gap: 18px;
@@ -427,17 +398,11 @@ footer {
     section {
         padding: 55px 6%;
     }
-
-    .section-title {
-        font-size: 28px;
-    }
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
     <div class="logo">SAMI.</div>
@@ -451,23 +416,28 @@ footer {
     </nav>
 </header>
 
-<!-- BANNER -->
+<!-- WELCOME BANNER -->
 
 <div class="banner-area">
 
-    <img id="welcomeBanner"
-         class="welcome-banner"
-         src="https://placehold.co/1200x240/17243b/38bdf8?text=Welcome+To+My+Portfolio"
-         alt="Welcome Banner">
+    <img
+        id="welcomeBanner"
+        class="welcome-banner"
+        src="https://placehold.co/1200x240/17243b/38bdf8?text=Welcome+To+My+Portfolio"
+        alt="Welcome Banner"
+    >
 
     <label class="banner-upload" for="bannerUpload">
         Upload / Change Welcome GIF
     </label>
 
-    <input type="file"
-           id="bannerUpload"
-           accept="image/gif"
-           hidden>
+    <input
+        type="file"
+        id="bannerUpload"
+        accept="image/gif"
+        hidden
+    >
+
 </div>
 
 <!-- HOME -->
@@ -475,11 +445,8 @@ footer {
 <div class="hero" id="home">
 
     <div class="hero-content">
-
         <h2>Hello, I'm</h2>
-
         <h1>Sami <span>Niazi</span></h1>
-
         <h2>Graphic Designer</h2>
 
         <p>
@@ -490,27 +457,25 @@ footer {
 
         <a href="#projects" class="btn">View My Work</a>
         <a href="#contact" class="btn">Contact Me</a>
-
     </div>
 
     <div class="profile">
 
-        <img id="profilePic"
-             src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
-             alt="Sami Profile">
+        <img
+            id="profilePic"
+            alt="Sami Profile"
+            src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
+        >
 
         <div class="upload-actions">
-
             <label class="upload admin-only" for="photoUpload">
                 Upload / Change Profile Picture
             </label>
-
         </div>
 
-        <input type="file"
-               id="photoUpload"
-               accept="image/jpeg,image/png,image/webp"
-               hidden>
+        <input type="file" id="photoUpload"
+            accept="image/jpeg,image/png,image/webp" hidden>
+
     </div>
 
 </div>
@@ -523,23 +488,21 @@ footer {
         About <span>Me</span>
     </h2>
 
-    <img id="aboutPic"
-         class="about-image"
-         src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
-         alt="About Sami">
+    <img
+        id="aboutPic"
+        class="about-image"
+        src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
+        alt="About Sami"
+    >
 
     <div class="upload-actions">
-
         <label class="upload admin-only" for="aboutUpload">
             Upload / Change About Picture
         </label>
-
     </div>
 
-    <input type="file"
-           id="aboutUpload"
-           accept="image/jpeg,image/png,image/webp"
-           hidden>
+    <input type="file" id="aboutUpload"
+        accept="image/jpeg,image/png,image/webp" hidden>
 
     <p>
         My name is Sami Niazi. I am passionate about Graphic
@@ -582,23 +545,17 @@ footer {
         My <span>Portfolio</span>
     </h2>
 
-    <!-- THUMBNAILS -->
-
     <h2 class="section-title">
         YouTube <span>Thumbnails</span>
     </h2>
 
     <div class="gallery" id="thumbnailGallery"></div>
 
-    <!-- POSTERS -->
-
     <h2 class="section-title" style="margin-top:65px">
         Poster <span>Designs</span>
     </h2>
 
     <div class="gallery poster-grid" id="posterGallery"></div>
-
-    <!-- LOGOS -->
 
     <h2 class="section-title" style="margin-top:65px">
         Logo <span>Designs</span>
@@ -626,13 +583,11 @@ footer {
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
     <p>© 2026 Sami Niazi | All Rights Reserved</p>
 </footer>
 
-<!-- IMAGE VIEWER -->
+<!-- FULL SCREEN IMAGE VIEWER -->
 
 <div class="image-viewer" id="imageViewer">
 
@@ -644,79 +599,13 @@ footer {
 
 </div>
 
-<p class="status" id="status"></p>
+<script>
 
-<!-- FIREBASE -->
-
-<script type="module">
-
-import { initializeApp }
-from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
-
-import {
-    getFirestore,
-    doc,
-    setDoc,
-    getDoc
-}
-from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
-
-import {
-    getStorage,
-    ref,
-    uploadBytes,
-    getDownloadURL
-}
-from "https://www.gstatic.com/firebasejs/11.6.0/firebase-storage.js";
-
-
-/* FIREBASE CONFIGURATION */
-
-const firebaseConfig = {
-
-    apiKey: "YOUR_API_KEY",
-
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-
-    projectId: "YOUR_PROJECT_ID",
-
-    storageBucket: "YOUR_STORAGE_BUCKET",
-
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-
-    appId: "YOUR_APP_ID"
-
-};
-
-
-/* FIREBASE START */
-
-const app = initializeApp(firebaseConfig);
-
-const db = getFirestore(app);
-
-const storage = getStorage(app);
-
-const statusText = document.getElementById("status");
-
-
-/* SETTINGS */
+/* ADMIN PASSWORD */
 
 const ADMIN_PASSWORD = "sami8888";
 
-let adminMode = false;
-
-const allowedTypes = [
-    "image/jpeg",
-    "image/png",
-    "image/webp",
-    "image/gif"
-];
-
-
-/* ADMIN LOGIN
-   CTRL + SHIFT + A
-*/
+/* ADMIN MODE: CTRL + SHIFT + A */
 
 document.addEventListener("keydown", function(event) {
 
@@ -728,43 +617,31 @@ document.addEventListener("keydown", function(event) {
 
         event.preventDefault();
 
-        if (adminMode) {
-
-            adminMode = false;
+        if (document.body.classList.contains("admin-mode")) {
 
             document.body.classList.remove("admin-mode");
-
-            alert("Admin mode OFF.");
-
+            alert("Admin mode band ho gaya.");
             return;
         }
 
-        const password = prompt("Admin password enter karein:");
+        const entered = prompt("Admin password enter karein:");
 
-        if (password === ADMIN_PASSWORD) {
-
-            adminMode = true;
+        if (entered === ADMIN_PASSWORD) {
 
             document.body.classList.add("admin-mode");
+            alert("Admin mode on. Ab aap pictures upload/change kar sakte hain.");
 
-            alert("Admin mode ON.");
+        } else if (entered !== null) {
 
-        } else if (password !== null) {
-
-            alert("Wrong password.");
-
+            alert("Password ghalat hai.");
         }
     }
-
 });
 
-
-/* FULL SCREEN IMAGE VIEWER */
+/* IMAGE VIEWER */
 
 const imageViewer = document.getElementById("imageViewer");
-
 const viewerImage = document.getElementById("viewerImage");
-
 
 document.addEventListener("click", function(event) {
 
@@ -775,175 +652,150 @@ document.addEventListener("click", function(event) {
     if (!img.closest(".profile, .about, .gallery")) return;
 
     viewerImage.src = img.src;
-
     imageViewer.classList.add("open");
 
 });
 
-
-function closeViewer() {
+document.getElementById("viewerClose").addEventListener("click", function() {
 
     imageViewer.classList.remove("open");
-
     viewerImage.src = "";
 
-}
+});
 
-
-document.getElementById("viewerClose").onclick = closeViewer;
-
-
-imageViewer.onclick = function(event) {
+imageViewer.addEventListener("click", function(event) {
 
     if (event.target === imageViewer) {
-
-        closeViewer();
-
-    }
-
-};
-
-
-document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Escape") {
-
-        closeViewer();
-
+        imageViewer.classList.remove("open");
+        viewerImage.src = "";
     }
 
 });
 
+document.addEventListener("keydown", function(event) {
 
-/* UPLOAD IMAGE TO FIREBASE */
-
-async function uploadImage(key, file) {
-
-    if (!adminMode) {
-
-        alert("Only admin can upload pictures.");
-
-        return null;
-
+    if (event.key === "Escape") {
+        imageViewer.classList.remove("open");
+        viewerImage.src = "";
     }
 
-    if (!allowedTypes.includes(file.type)) {
+});
 
-        alert("Invalid image format.");
+/* IMAGE DATABASE */
 
-        return null;
+const DB_NAME = "SamiPortfolioImages";
+const STORE_NAME = "images";
 
-    }
+const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp"
+];
 
-    if (file.size > 10 * 1024 * 1024) {
+function openImageDB() {
 
-        alert("Image must be smaller than 10 MB.");
+    return new Promise((resolve, reject) => {
 
-        return null;
+        const request = indexedDB.open(DB_NAME, 1);
 
-    }
+        request.onupgradeneeded = () => {
+            request.result.createObjectStore(STORE_NAME);
+        };
 
-    statusText.textContent = "Uploading picture...";
+        request.onsuccess = () => resolve(request.result);
+        request.onerror = () => reject(request.error);
 
-    try {
-
-        /*
-          Unique filename use hota hai.
-          Purani uploaded file ko delete nahi kiya jata.
-        */
-
-        const uniqueName =
-            Date.now() + "-" +
-            Math.random().toString(36).slice(2) +
-            "." +
-            file.name.split(".").pop();
-
-        const storageRef = ref(
-            storage,
-            "portfolio/" + key + "/" + uniqueName
-        );
-
-        await uploadBytes(storageRef, file, {
-            contentType: file.type
-        });
-
-        const downloadURL = await getDownloadURL(storageRef);
-
-
-        /*
-          Same Firestore document key.
-          Is se existing portfolio slots preserve rehte hain.
-        */
-
-        await setDoc(
-            doc(db, "portfolioImages", key),
-            {
-                url: downloadURL,
-                updatedAt: new Date().toISOString()
-            }
-        );
-
-        statusText.textContent = "Picture uploaded successfully!";
-
-        return downloadURL;
-
-    } catch (error) {
-
-        console.error("Upload error:", error);
-
-        statusText.textContent = "Upload failed.";
-
-        alert(
-            "Upload failed. Firebase configuration, Storage rules aur Firestore rules check karein."
-        );
-
-        return null;
-
-    }
+    });
 
 }
 
+/* SAVE IMAGE */
 
-/* LOAD ONLINE PICTURE */
+async function saveImage(key, file) {
 
-async function loadOnlineImage(key, image) {
+    const db = await openImageDB();
+
+    return new Promise((resolve, reject) => {
+
+        const tx = db.transaction(STORE_NAME, "readwrite");
+
+        tx.objectStore(STORE_NAME).put(file, key);
+
+        tx.oncomplete = () => {
+            db.close();
+            resolve();
+        };
+
+        tx.onerror = () => {
+            db.close();
+            reject(tx.error);
+        };
+
+    });
+
+}
+
+/* LOAD IMAGE */
+
+async function loadImage(key) {
+
+    const db = await openImageDB();
+
+    return new Promise((resolve, reject) => {
+
+        const tx = db.transaction(STORE_NAME, "readonly");
+
+        const req = tx.objectStore(STORE_NAME).get(key);
+
+        req.onsuccess = () => {
+            const result = req.result;
+            db.close();
+            resolve(result);
+        };
+
+        req.onerror = () => {
+            db.close();
+            reject(req.error);
+        };
+
+    });
+
+}
+
+/* RESTORE SAVED IMAGE */
+
+async function restoreImage(key, img) {
 
     try {
 
-        const snapshot = await getDoc(
-            doc(db, "portfolioImages", key)
-        );
+        const file = await loadImage(key);
 
-        if (snapshot.exists()) {
+        if (file) {
 
-            const data = snapshot.data();
-
-            if (data.url) {
-
-                image.src = data.url;
-
+            if (img.dataset.objectUrl) {
+                URL.revokeObjectURL(img.dataset.objectUrl);
             }
 
+            const url = URL.createObjectURL(file);
+
+            img.src = url;
+            img.dataset.objectUrl = url;
         }
 
     } catch (error) {
-
-        console.error("Image loading error:", key, error);
-
+        console.error("Image restore error:", error);
     }
 
 }
 
-
 /* PROFILE AND ABOUT UPLOAD */
 
-function setupUpload(inputId, imageId, key) {
+function setupUpload(inputId, imageId, storageKey) {
 
     const input = document.getElementById(inputId);
-
     const image = document.getElementById(imageId);
 
-    loadOnlineImage(key, image);
+    restoreImage(storageKey, image);
 
     input.addEventListener("change", async function() {
 
@@ -951,11 +803,29 @@ function setupUpload(inputId, imageId, key) {
 
         if (!file) return;
 
-        const url = await uploadImage(key, file);
+        if (!allowedTypes.includes(file.type)) {
+            alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
+            this.value = "";
+            return;
+        }
 
-        if (url) {
+        try {
 
-            image.src = url;
+            await saveImage(storageKey, file);
+
+            if (image.dataset.objectUrl) {
+                URL.revokeObjectURL(image.dataset.objectUrl);
+            }
+
+            const newUrl = URL.createObjectURL(file);
+
+            image.src = newUrl;
+            image.dataset.objectUrl = newUrl;
+
+        } catch (error) {
+
+            alert("Picture save nahi ho saki. Browser storage check karein.");
+            console.error(error);
 
         }
 
@@ -965,30 +835,12 @@ function setupUpload(inputId, imageId, key) {
 
 }
 
-
-setupUpload(
-    "photoUpload",
-    "profilePic",
-    "profile-picture"
-);
-
-
-setupUpload(
-    "aboutUpload",
-    "aboutPic",
-    "about-picture"
-);
-
-
 /* WELCOME GIF UPLOAD */
 
 const bannerInput = document.getElementById("bannerUpload");
-
 const bannerImage = document.getElementById("welcomeBanner");
 
-
-loadOnlineImage("welcome-banner", bannerImage);
-
+restoreImage("welcome-banner", bannerImage);
 
 bannerInput.addEventListener("change", async function() {
 
@@ -997,20 +849,28 @@ bannerInput.addEventListener("change", async function() {
     if (!file) return;
 
     if (file.type !== "image/gif") {
-
-        alert("Sirf GIF upload karein.");
-
+        alert("Sirf GIF animation upload kar sakte hain.");
         this.value = "";
-
         return;
-
     }
 
-    const url = await uploadImage("welcome-banner", file);
+    try {
 
-    if (url) {
+        await saveImage("welcome-banner", file);
+
+        if (bannerImage.dataset.objectUrl) {
+            URL.revokeObjectURL(bannerImage.dataset.objectUrl);
+        }
+
+        const url = URL.createObjectURL(file);
 
         bannerImage.src = url;
+        bannerImage.dataset.objectUrl = url;
+
+    } catch (error) {
+
+        alert("Banner save nahi ho saka.");
+        console.error(error);
 
     }
 
@@ -1018,8 +878,7 @@ bannerInput.addEventListener("change", async function() {
 
 });
 
-
-/* CREATE PORTFOLIO SLOTS */
+/* CREATE PORTFOLIO BOXES */
 
 function makeSlots(containerId, type, count) {
 
@@ -1027,86 +886,45 @@ function makeSlots(containerId, type, count) {
 
     for (let i = 1; i <= count; i++) {
 
-        /*
-          Existing image keys are preserved:
-          thumbnail-1 ... thumbnail-10
-          poster-1 ... poster-10
-          logo-1 ... logo-10
-        */
-
-        const key = type.toLowerCase() + "-" + i;
-
         const card = document.createElement("div");
-
         card.className = "card";
 
-
-        /* IMAGE */
+        const title = type + " " + i;
 
         const image = document.createElement("img");
 
         image.className = "project-image";
-
-        image.alt = type + " " + i;
+        image.alt = title;
 
         image.src =
-            `https://placehold.co/600x350/17243b/38bdf8?text=${type}+${i}`;
+            `https://placehold.co/600x350/17243b/38bdf8?text=${encodeURIComponent(title)}`;
 
-
-        /* TITLE */
+        image.id = type.toLowerCase() + "Image" + i;
 
         const heading = document.createElement("h3");
-
-        heading.textContent = type + " " + i;
-
-
-        /* UPLOAD LABEL */
+        heading.className = "project-title";
+        heading.textContent = title;
 
         const label = document.createElement("label");
-
         label.className = "project-upload admin-only";
-
         label.textContent = "Upload Picture";
 
-
-        /* FILE INPUT */
-
         const input = document.createElement("input");
-
         input.type = "file";
-
         input.accept = "image/jpeg,image/png,image/webp";
-
         input.hidden = true;
-
-        input.id = "upload-" + key;
+        input.id = type.toLowerCase() + "Upload" + i;
 
         label.htmlFor = input.id;
 
-
-        /* CHANGE BUTTON */
+        const key = type.toLowerCase() + "-" + i;
 
         const change = document.createElement("button");
-
         change.type = "button";
-
         change.className = "change-btn admin-only";
-
         change.textContent = "Change Picture";
 
-        change.onclick = function() {
-
-            input.click();
-
-        };
-
-
-        /* LOAD EXISTING PICTURE */
-
-        loadOnlineImage(key, image);
-
-
-        /* UPLOAD EVENT */
+        change.addEventListener("click", () => input.click());
 
         input.addEventListener("change", async function() {
 
@@ -1114,16 +932,29 @@ function makeSlots(containerId, type, count) {
 
             if (!file) return;
 
-            const url = await uploadImage(key, file);
+            if (!allowedTypes.includes(file.type)) {
+                alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
+                this.value = "";
+                return;
+            }
 
-            /*
-              Only update displayed picture after
-              successful upload and database save.
-            */
+            try {
 
-            if (url) {
+                await saveImage(key, file);
+
+                if (image.dataset.objectUrl) {
+                    URL.revokeObjectURL(image.dataset.objectUrl);
+                }
+
+                const url = URL.createObjectURL(file);
 
                 image.src = url;
+                image.dataset.objectUrl = url;
+
+            } catch (error) {
+
+                alert("Picture save nahi ho saki.");
+                console.error(error);
 
             }
 
@@ -1131,51 +962,32 @@ function makeSlots(containerId, type, count) {
 
         });
 
+        restoreImage(key, image);
 
-        /* ADD EVERYTHING */
-
-        card.appendChild(image);
-
-        card.appendChild(heading);
-
-        card.appendChild(label);
-
-        card.appendChild(input);
-
-        card.appendChild(change);
-
+        card.append(image, heading, label, input, change);
         container.appendChild(card);
 
     }
 
 }
 
+/* SETUP PROFILE AND ABOUT UPLOAD */
 
-/* 10 THUMBNAILS */
+setupUpload("photoUpload", "profilePic", "profile-picture");
 
-makeSlots(
-    "thumbnailGallery",
-    "Thumbnail",
-    10
-);
+setupUpload("aboutUpload", "aboutPic", "about-picture");
 
+/* CREATE 10 THUMBNAILS */
 
-/* 10 POSTERS */
+makeSlots("thumbnailGallery", "Thumbnail", 10);
 
-makeSlots(
-    "posterGallery",
-    "Poster",
-    10
-);
+/* CREATE 10 POSTERS */
 
+makeSlots("posterGallery", "Poster", 10);
 
-/* 10 LOGOS */
+/* CREATE 10 LOGOS */
 
-makeSlots(
-    "logoGallery",
-    "Logo",
-    10
-);
+makeSlots("logoGallery", "Logo", 10);
 
 </script>
 
