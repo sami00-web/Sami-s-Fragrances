@@ -197,7 +197,7 @@ section {
     cursor: zoom-in;
 }
 
-/* THUMBNAIL BOX - FIXED 16:9, NO BLACK BORDER */
+/* THUMBNAIL DESIGN: 16:9 AND NO BORDER */
 
 #thumbnailGallery .card {
     padding: 12px;
@@ -218,9 +218,13 @@ section {
     background: transparent;
 }
 
+/* POSTER SIZE */
+
 .poster-grid .project-image {
     height: 260px;
 }
+
+/* LOGO SIZE */
 
 .logo-grid .project-image {
     height: 170px;
@@ -348,7 +352,6 @@ footer {
         padding: 55px 6%;
     }
 }
-
 </style>
 </head>
 
@@ -492,7 +495,7 @@ footer {
         My <span>Portfolio</span>
     </h2>
 
-    <!-- THUMBNAILS -->
+    <!-- 10 THUMBNAILS -->
 
     <h2 class="section-title">
         YouTube <span>Thumbnails</span>
@@ -500,7 +503,7 @@ footer {
 
     <div class="gallery" id="thumbnailGallery"></div>
 
-    <!-- POSTERS -->
+    <!-- 10 POSTERS -->
 
     <h2 class="section-title" style="margin-top:65px">
         Poster <span>Designs</span>
@@ -508,7 +511,7 @@ footer {
 
     <div class="gallery poster-grid" id="posterGallery"></div>
 
-    <!-- LOGOS -->
+    <!-- 10 LOGOS -->
 
     <h2 class="section-title" style="margin-top:65px">
         Logo <span>Designs</span>
@@ -988,30 +991,30 @@ setupUpload(
 );
 
 
-/* CREATE 4 THUMBNAILS */
+/* CREATE 10 THUMBNAILS */
 
 makeSlots(
     "thumbnailGallery",
     "Thumbnail",
-    4
+    10
 );
 
 
-/* CREATE 6 POSTERS */
+/* CREATE 10 POSTERS */
 
 makeSlots(
     "posterGallery",
     "Poster",
-    6
+    10
 );
 
 
-/* CREATE 8 LOGOS */
+/* CREATE 10 LOGOS */
 
 makeSlots(
     "logoGallery",
     "Logo",
-    8
+    10
 );
 
 </script>
