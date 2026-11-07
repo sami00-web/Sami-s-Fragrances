@@ -197,7 +197,7 @@ section {
     cursor: zoom-in;
 }
 
-/* THUMBNAILS: 16:9, NO BORDER */
+/* THUMBNAILS: 16:9 WITH BORDER */
 
 #thumbnailGallery .card {
     padding: 12px;
@@ -212,13 +212,56 @@ section {
     aspect-ratio: 16 / 9;
     height: auto;
     object-fit: cover;
-    border: none;
-    border-radius: 0;
+    border: 2px solid #38bdf8;
+    border-radius: 8px;
+    padding: 3px;
     margin: 0 0 12px;
-    background: transparent;
+    background: #17243b;
 }
 
-/* POSTER: VISIBLE BORDER */
+/* TOP VIDEO BANNER */
+
+.video-banner {
+    width: 100%;
+    padding: 24px 8%;
+    background: #080e1c;
+}
+
+.video-banner video {
+    display: block;
+    width: 100%;
+    max-height: 380px;
+    aspect-ratio: 16 / 6;
+    object-fit: cover;
+    border: 2px solid #38bdf8;
+    border-radius: 12px;
+    background: #111d33;
+}
+
+.banner-controls {
+    text-align: center;
+    margin-top: 12px;
+}
+
+.banner-upload {
+    display: none;
+}
+
+body.admin-mode .banner-upload {
+    display: inline-block;
+}
+
+@media(max-width:750px) {
+    .video-banner {
+        padding: 18px 6%;
+    }
+
+    .video-banner video {
+        aspect-ratio: 16 / 9;
+    }
+}
+
+/* POSTER BORDER */
 
 .poster-grid .project-image {
     height: 260px;
@@ -227,7 +270,7 @@ section {
     padding: 3px;
 }
 
-/* LOGO: CIRCULAR BOX */
+/* CIRCULAR LOGO BOX */
 
 .logo-grid .project-image {
     width: 170px;
@@ -364,6 +407,8 @@ footer {
 
 <body>
 
+<!-- HEADER -->
+
 <header>
     <div class="logo">SAMI.</div>
 
@@ -376,13 +421,42 @@ footer {
     </nav>
 </header>
 
+<!-- TOP VIDEO BANNER -->
+
+<section class="video-banner" id="topBanner">
+
+    <video id="bannerVideo" controls playsinline preload="metadata">
+        Your browser does not support video playback.
+    </video>
+
+    <div class="banner-controls">
+
+        <label class="upload admin-only" for="bannerUpload">
+            🎬 Upload / Change Banner Video
+        </label>
+
+        <input
+            type="file"
+            id="bannerUpload"
+            class="banner-upload"
+            accept="video/mp4,video/webm,video/ogg"
+            hidden
+        >
+
+    </div>
+
+</section>
+
 <!-- HOME -->
 
 <div class="hero" id="home">
 
     <div class="hero-content">
+
         <h2>Hello, I'm</h2>
+
         <h1>Sami <span>Niazi</span></h1>
+
         <h2>Graphic Designer</h2>
 
         <p>
@@ -392,7 +466,9 @@ footer {
         </p>
 
         <a href="#projects" class="btn">View My Work</a>
+
         <a href="#contact" class="btn">Contact Me</a>
+
     </div>
 
     <div class="profile">
@@ -404,9 +480,11 @@ footer {
         >
 
         <div class="upload-actions">
+
             <label class="upload admin-only" for="photoUpload">
                 📷 Upload / Change Profile Picture
             </label>
+
         </div>
 
         <input
@@ -436,9 +514,11 @@ footer {
     >
 
     <div class="upload-actions">
+
         <label class="upload admin-only" for="aboutUpload">
             📷 Upload / Change About Picture
         </label>
+
     </div>
 
     <input
@@ -469,12 +549,14 @@ footer {
     <div class="gallery">
 
         <div class="card">
+
             <h3>GRAPHIC DESIGNING</h3>
 
             <p>
                 Professional thumbnails, poster design, logo design,
                 banners, social media posts and creative graphic designs.
             </p>
+
         </div>
 
     </div>
@@ -518,7 +600,9 @@ footer {
     </h2>
 
     <p>Email: your@email.com</p>
+
     <p>WhatsApp: Your Number</p>
+
     <p>GitHub: github.com/yourusername</p>
 
     <a href="mailto:your@email.com" class="btn">
@@ -526,6 +610,8 @@ footer {
     </a>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
     <p>© 2026 Sami Niazi | All Rights Reserved</p>
@@ -583,6 +669,7 @@ document.addEventListener("keydown", function(event) {
             alert("Password ghalat hai.");
 
         }
+
     }
 
 });
@@ -591,6 +678,7 @@ document.addEventListener("keydown", function(event) {
 /* FULL SCREEN IMAGE VIEWER */
 
 const imageViewer = document.getElementById("imageViewer");
+
 const viewerImage = document.getElementById("viewerImage");
 
 document.addEventListener("click", function(event) {
@@ -646,6 +734,7 @@ document.addEventListener("keydown", function(event) {
 /* IMAGE DATABASE */
 
 const DB_NAME = "SamiPortfolioImages";
+
 const STORE_NAME = "images";
 
 const allowedTypes = [
@@ -654,6 +743,8 @@ const allowedTypes = [
     "image/webp"
 ];
 
+
+/* OPEN DATABASE */
 
 function openImageDB() {
 
@@ -676,7 +767,7 @@ function openImageDB() {
 }
 
 
-/* SAVE IMAGE */
+/* SAVE IMAGE OR VIDEO */
 
 async function saveImage(key, file) {
 
@@ -689,13 +780,19 @@ async function saveImage(key, file) {
         tx.objectStore(STORE_NAME).put(file, key);
 
         tx.oncomplete = () => {
+
             db.close();
+
             resolve();
+
         };
 
         tx.onerror = () => {
+
             db.close();
+
             reject(tx.error);
+
         };
 
     });
@@ -703,7 +800,7 @@ async function saveImage(key, file) {
 }
 
 
-/* LOAD IMAGE */
+/* LOAD IMAGE OR VIDEO */
 
 async function loadImage(key) {
 
@@ -749,7 +846,9 @@ async function restoreImage(key, img) {
         if (file) {
 
             if (img.dataset.objectUrl) {
+
                 URL.revokeObjectURL(img.dataset.objectUrl);
+
             }
 
             const url = URL.createObjectURL(file);
@@ -800,7 +899,9 @@ function setupUpload(inputId, imageId, storageKey) {
             await saveImage(storageKey, file);
 
             if (image.dataset.objectUrl) {
+
                 URL.revokeObjectURL(image.dataset.objectUrl);
+
             }
 
             const newUrl = URL.createObjectURL(file);
@@ -822,6 +923,106 @@ function setupUpload(inputId, imageId, storageKey) {
     });
 
 }
+
+
+/* TOP BANNER VIDEO UPLOAD AND RESTORE */
+
+const bannerVideo = document.getElementById("bannerVideo");
+
+const bannerUpload = document.getElementById("bannerUpload");
+
+const allowedVideoTypes = [
+    "video/mp4",
+    "video/webm",
+    "video/ogg"
+];
+
+
+/* RESTORE BANNER VIDEO */
+
+async function restoreBannerVideo() {
+
+    try {
+
+        const file = await loadImage("top-banner-video");
+
+        if (file) {
+
+            if (bannerVideo.dataset.objectUrl) {
+
+                URL.revokeObjectURL(bannerVideo.dataset.objectUrl);
+
+            }
+
+            const url = URL.createObjectURL(file);
+
+            bannerVideo.src = url;
+
+            bannerVideo.dataset.objectUrl = url;
+
+        }
+
+    } catch (error) {
+
+        console.error("Banner video restore error:", error);
+
+    }
+
+}
+
+
+/* UPLOAD BANNER VIDEO */
+
+bannerUpload.addEventListener("change", async function() {
+
+    const file = this.files[0];
+
+    if (!file) return;
+
+    if (!allowedVideoTypes.includes(file.type)) {
+
+        alert("Sirf MP4, WEBM aur OGG video upload kar sakte hain.");
+
+        this.value = "";
+
+        return;
+
+    }
+
+    try {
+
+        await saveImage("top-banner-video", file);
+
+        if (bannerVideo.dataset.objectUrl) {
+
+            URL.revokeObjectURL(bannerVideo.dataset.objectUrl);
+
+        }
+
+        const url = URL.createObjectURL(file);
+
+        bannerVideo.src = url;
+
+        bannerVideo.dataset.objectUrl = url;
+
+        bannerVideo.load();
+
+        alert("Banner video save ho gayi.");
+
+    } catch (error) {
+
+        alert("Video save nahi ho saki. Browser storage ya video file size check karein.");
+
+        console.error(error);
+
+    }
+
+    this.value = "";
+
+});
+
+
+restoreBannerVideo();
 
 
 /* CREATE PORTFOLIO BOXES */
@@ -891,6 +1092,8 @@ function makeSlots(containerId, type, count) {
         change.addEventListener("click", () => input.click());
 
 
+        /* UPLOAD PICTURE */
+
         input.addEventListener("change", async function() {
 
             const file = this.files[0];
@@ -912,7 +1115,9 @@ function makeSlots(containerId, type, count) {
                 await saveImage(key, file);
 
                 if (image.dataset.objectUrl) {
+
                     URL.revokeObjectURL(image.dataset.objectUrl);
+
                 }
 
                 const url = URL.createObjectURL(file);
