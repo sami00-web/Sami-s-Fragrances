@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,409 +6,391 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sami Niazi | Graphic Designer Portfolio</title>
 
+<!-- SUPABASE LIBRARY -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    scroll-behavior:smooth;
 }
 
 body {
-    background: #080e1c;
-    color: white;
+    background:#080e1c;
+    color:white;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 8%;
-    background: #101a30;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 8%;
+    background:#101a30;
+    position:sticky;
+    top:0;
+    z-index:10;
+    gap:15px;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #38bdf8;
+    font-size:25px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav {
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+    color:white;
+    text-decoration:none;
 }
 
 nav a:hover {
-    color: #38bdf8;
+    color:#38bdf8;
+}
+
+.btn {
+    display:inline-block;
+    background:#0ea5e9;
+    color:white;
+    padding:12px 22px;
+    border:0;
+    border-radius:7px;
+    text-decoration:none;
+    cursor:pointer;
+    margin:5px;
+}
+
+.btn:hover {
+    background:#0284c7;
+}
+
+.admin-btn {
+    background:#16a34a;
 }
 
 .hero {
-    min-height: 75vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 60px 10%;
-    gap: 40px;
+    min-height:75vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:60px 10%;
+    gap:40px;
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width:600px;
 }
 
 .hero h1 {
-    font-size: 50px;
-    margin: 15px 0;
+    font-size:50px;
+    margin:15px 0;
 }
 
 .hero h1 span,
 .hero h2 {
-    color: #38bdf8;
+    color:#38bdf8;
 }
 
 .hero h2 {
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
 .hero p,
 .about p,
 .card p,
 .contact p {
-    color: #b8c5d8;
-    line-height: 1.8;
+    color:#b8c5d8;
+    line-height:1.8;
 }
 
 .hero p {
-    margin-bottom: 25px;
-}
-
-.btn {
-    display: inline-block;
-    background: #0ea5e9;
-    color: white;
-    padding: 13px 24px;
-    border-radius: 7px;
-    text-decoration: none;
-    border: 0;
-    cursor: pointer;
-    margin: 5px;
-}
-
-.btn:hover {
-    background: #0284c7;
+    margin-bottom:25px;
 }
 
 .profile {
-    text-align: center;
+    text-align:center;
 }
 
 .profile img {
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    object-fit: contain;
-    border: 5px solid #38bdf8;
-    background: #17243b;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    object-fit:contain;
+    border:5px solid #38bdf8;
+    background:#17243b;
+}
+
+section {
+    padding:75px 10%;
+}
+
+.section-title {
+    text-align:center;
+    font-size:35px;
+    margin-bottom:40px;
+}
+
+.section-title span {
+    color:#38bdf8;
+}
+
+.about p {
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.about-image {
+    width:200px;
+    height:200px;
+    object-fit:contain;
+    border-radius:15px;
+    display:block;
+    margin:25px auto;
+    border:3px solid #38bdf8;
+    background:#17243b;
+}
+
+.gallery {
+    display:grid;
+    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+
+.card {
+    background:#111d33;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #243653;
+    transition:.3s;
+    min-width:0;
+}
+
+.card:hover {
+    transform:translateY(-4px);
+    border-color:#38bdf8;
+}
+
+.card h3 {
+    color:#38bdf8;
+    margin-bottom:12px;
+}
+
+.project-image {
+    display:block;
+    width:100%;
+    height:190px;
+    object-fit:contain;
+    border-radius:8px;
+    margin-bottom:15px;
+    background:#17243b;
+    border:1px solid #243653;
+    cursor:zoom-in;
+}
+
+#thumbnailGallery .card {
+    padding:12px;
+    border:none;
+    background:transparent;
+}
+
+#thumbnailGallery .project-image {
+    aspect-ratio:16/9;
+    height:auto;
+    object-fit:cover;
+    border:2px solid #38bdf8;
+    padding:3px;
+}
+
+.poster-grid .project-image {
+    height:260px;
+    border:2px solid #38bdf8;
+    padding:3px;
+}
+
+.logo-grid .project-image {
+    width:170px;
+    height:170px;
+    aspect-ratio:1/1;
+    object-fit:contain;
+    border:2px solid #38bdf8;
+    border-radius:50%;
+    margin:0 auto 15px;
+}
+
+.video-banner {
+    width:100%;
+    padding:24px 8%;
+    background:#080e1c;
+}
+
+.video-banner video {
+    display:none;
+    width:100%;
+    max-height:380px;
+    aspect-ratio:16/6;
+    object-fit:cover;
+    border:2px solid #38bdf8;
+    border-radius:12px;
+    background:#111d33;
+}
+
+.video-banner video.has-video {
+    display:block;
+}
+
+.banner-controls {
+    text-align:center;
+    margin-top:12px;
+}
+
+.upload-actions {
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
 .upload,
 .project-upload {
-    display: inline-block;
-    margin: 12px auto;
-    color: #38bdf8;
-    cursor: pointer;
-    text-align: center;
-}
-
-section {
-    padding: 75px 10%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 35px;
-    margin-bottom: 40px;
-}
-
-.section-title span {
-    color: #38bdf8;
-}
-
-.about p {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-}
-
-.about-image {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 15px;
-    display: block;
-    margin: 25px auto;
-    border: 3px solid #38bdf8;
-    background: #17243b;
-}
-
-.card {
-    background: #111d33;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    border: 1px solid #243653;
-    transition: .3s;
-    min-width: 0;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #38bdf8;
-}
-
-.card h3 {
-    color: #38bdf8;
-    margin-bottom: 12px;
-}
-
-.gallery {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-}
-
-.gallery .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.project-image {
-    width: 100%;
-    height: 190px;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    background: #17243b;
-    border: 1px solid #243653;
-    cursor: zoom-in;
-}
-
-/* THUMBNAILS: 16:9 WITH BORDER */
-
-#thumbnailGallery .card {
-    padding: 12px;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-}
-
-#thumbnailGallery .project-image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    object-fit: cover;
-    border: 2px solid #38bdf8;
-    border-radius: 8px;
-    padding: 3px;
-    margin: 0 0 12px;
-    background: #17243b;
-}
-
-/* TOP VIDEO BANNER */
-
-.video-banner {
-    width: 100%;
-    padding: 24px 8%;
-    background: #080e1c;
-}
-
-.video-banner video {
-    display: block;
-    width: 100%;
-    max-height: 380px;
-    aspect-ratio: 16 / 6;
-    object-fit: cover;
-    border: 2px solid #38bdf8;
-    border-radius: 12px;
-    background: #111d33;
-}
-
-.banner-controls {
-    text-align: center;
-    margin-top: 12px;
-}
-
-.banner-upload {
-    display: none;
-}
-
-body.admin-mode .banner-upload {
-    display: inline-block;
-}
-
-@media(max-width:750px) {
-    .video-banner {
-        padding: 18px 6%;
-    }
-
-    .video-banner video {
-        aspect-ratio: 16 / 9;
-    }
-}
-
-/* POSTER BORDER */
-
-.poster-grid .project-image {
-    height: 260px;
-    border: 2px solid #38bdf8;
-    border-radius: 8px;
-    padding: 3px;
-}
-
-/* CIRCULAR LOGO BOX */
-
-.logo-grid .project-image {
-    width: 170px;
-    height: 170px;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    border: 2px solid #38bdf8;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    background: #17243b;
-}
-
-.upload-actions {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    display:none;
+    margin:12px auto;
+    color:#38bdf8;
+    cursor:pointer;
+    text-align:center;
 }
 
 .change-btn {
-    background: #243653;
-    color: #fff;
-    border: 1px solid #38bdf8;
-    padding: 9px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.change-btn:hover {
-    background: #0c4a6e;
+    display:none;
+    background:#243653;
+    color:white;
+    border:1px solid #38bdf8;
+    padding:9px 14px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 .admin-only {
-    display: none !important;
+    display:none !important;
 }
 
 body.admin-mode .admin-only {
-    display: inline-block !important;
+    display:inline-block !important;
 }
 
 .contact {
-    text-align: center;
+    text-align:center;
 }
 
 .contact p {
-    margin: 15px;
+    margin:15px;
 }
 
 .contact a {
-    color: #38bdf8;
+    color:#38bdf8;
 }
 
 footer {
-    background: #101a30;
-    text-align: center;
-    padding: 25px;
-    color: #9caec6;
+    background:#101a30;
+    text-align:center;
+    padding:25px;
+    color:#9caec6;
 }
 
-/* FULL SCREEN IMAGE VIEWER */
-
 .image-viewer {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .95);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
 }
 
 .image-viewer.open {
-    display: flex;
+    display:flex;
 }
 
 .image-viewer img {
-    max-width: 95%;
-    max-height: 90vh;
-    object-fit: contain;
+    max-width:95%;
+    max-height:90vh;
+    object-fit:contain;
 }
 
 .viewer-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    background: #e11d48;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 25px;
-    cursor: pointer;
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    background:#e11d48;
+    border:none;
+    border-radius:50%;
+    width:45px;
+    height:45px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.status {
+    text-align:center;
+    color:#38bdf8;
+    padding:10px;
+}
+
+input[type="file"] {
+    display:none;
 }
 
 @media(max-width:750px) {
     header {
-        flex-direction: column;
-        gap: 18px;
+        flex-direction:column;
+        gap:18px;
     }
 
     nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    nav a {
-        margin: 0;
+        justify-content:center;
     }
 
     .hero {
-        flex-direction: column-reverse;
-        text-align: center;
+        flex-direction:column-reverse;
+        text-align:center;
     }
 
     .hero h1 {
-        font-size: 36px;
+        font-size:36px;
     }
 
     .profile img {
-        width: 220px;
-        height: 220px;
+        width:220px;
+        height:220px;
     }
 
     section {
-        padding: 55px 6%;
+        padding:55px 6%;
+    }
+
+    .video-banner {
+        padding:18px 6%;
+    }
+
+    .video-banner video {
+        aspect-ratio:16/9;
     }
 }
 </style>
 </head>
 
 <body>
-
-<!-- HEADER -->
 
 <header>
     <div class="logo">SAMI.</div>
@@ -419,9 +402,15 @@ footer {
         <a href="#projects">Portfolio</a>
         <a href="#contact">Contact</a>
     </nav>
+
+    <button class="btn admin-btn" id="adminLogin">
+        Admin Login
+    </button>
 </header>
 
-<!-- TOP VIDEO BANNER -->
+<div class="status" id="status">Welcome to Sami's Portfolio</div>
+
+<!-- VIDEO BANNER -->
 
 <section class="video-banner" id="topBanner">
 
@@ -435,13 +424,8 @@ footer {
             🎬 Upload / Change Banner Video
         </label>
 
-        <input
-            type="file"
-            id="bannerUpload"
-            class="banner-upload"
-            accept="video/mp4,video/webm,video/ogg"
-            hidden
-        >
+        <input type="file" id="bannerUpload"
+        accept="video/mp4,video/webm,video/ogg">
 
     </div>
 
@@ -466,33 +450,24 @@ footer {
         </p>
 
         <a href="#projects" class="btn">View My Work</a>
-
         <a href="#contact" class="btn">Contact Me</a>
 
     </div>
 
     <div class="profile">
 
-        <img
-            id="profilePic"
-            alt="Sami Profile"
-            src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
-        >
+        <img id="profilePic"
+        alt="Sami Profile"
+        src="https://placehold.co/300x300/17243b/38bdf8?text=Sami">
 
         <div class="upload-actions">
-
             <label class="upload admin-only" for="photoUpload">
                 📷 Upload / Change Profile Picture
             </label>
-
         </div>
 
-        <input
-            type="file"
-            id="photoUpload"
-            accept="image/jpeg,image/png,image/webp"
-            hidden
-        >
+        <input type="file" id="photoUpload"
+        accept="image/jpeg,image/png,image/webp">
 
     </div>
 
@@ -506,27 +481,19 @@ footer {
         About <span>Me</span>
     </h2>
 
-    <img
-        id="aboutPic"
-        class="about-image"
-        src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
-        alt="About Sami"
-    >
+    <img id="aboutPic"
+    class="about-image"
+    src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
+    alt="About Sami">
 
     <div class="upload-actions">
-
         <label class="upload admin-only" for="aboutUpload">
             📷 Upload / Change About Picture
         </label>
-
     </div>
 
-    <input
-        type="file"
-        id="aboutUpload"
-        accept="image/jpeg,image/png,image/webp"
-        hidden
-    >
+    <input type="file" id="aboutUpload"
+    accept="image/jpeg,image/png,image/webp">
 
     <p>
         My name is Sami Niazi. I am passionate about Graphic
@@ -549,14 +516,12 @@ footer {
     <div class="gallery">
 
         <div class="card">
-
             <h3>GRAPHIC DESIGNING</h3>
 
             <p>
                 Professional thumbnails, poster design, logo design,
                 banners, social media posts and creative graphic designs.
             </p>
-
         </div>
 
     </div>
@@ -600,9 +565,7 @@ footer {
     </h2>
 
     <p>Email: your@email.com</p>
-
     <p>WhatsApp: Your Number</p>
-
     <p>GitHub: github.com/yourusername</p>
 
     <a href="mailto:your@email.com" class="btn">
@@ -611,13 +574,11 @@ footer {
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
     <p>© 2026 Sami Niazi | All Rights Reserved</p>
 </footer>
 
-<!-- FULL SCREEN IMAGE VIEWER -->
+<!-- FULL SCREEN VIEWER -->
 
 <div class="image-viewer" id="imageViewer">
 
@@ -631,111 +592,186 @@ footer {
 
 <script>
 
-/* ADMIN PASSWORD */
+/* =================================
+   SUPABASE CONNECTION
+================================= */
 
-const ADMIN_PASSWORD = "sami8888";
+const SUPABASE_URL =
+"https://zfxskbdcduxfibctvozn.supabase.co";
 
-/* ADMIN MODE: CTRL + SHIFT + A */
+const SUPABASE_KEY =
+"sb_publishable_w2l0pizQDij2QzDxCGFeoA_JutaNp5t";
 
-document.addEventListener("keydown", function(event) {
+const BUCKET = "portfolio-images";
 
-    if (
-        event.ctrlKey &&
-        event.shiftKey &&
-        event.key.toLowerCase() === "a"
-    ) {
+const supabase = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
 
-        event.preventDefault();
+let currentSession = null;
 
-        if (document.body.classList.contains("admin-mode")) {
+const statusBox = document.getElementById("status");
 
-            document.body.classList.remove("admin-mode");
+function showStatus(message) {
+    statusBox.textContent = message;
+}
 
-            alert("Admin mode band ho gaya.");
+/* =================================
+   ADMIN LOGIN
+================================= */
 
+const adminLogin = document.getElementById("adminLogin");
+
+async function updateAdminMode(session) {
+
+    currentSession = session;
+
+    if (session) {
+
+        document.body.classList.add("admin-mode");
+
+        adminLogin.textContent = "Admin Logout";
+
+        adminLogin.classList.add("admin-btn");
+
+        showStatus("Admin logged in. You can upload your work.");
+
+    } else {
+
+        document.body.classList.remove("admin-mode");
+
+        adminLogin.textContent = "Admin Login";
+
+        showStatus("Welcome to Sami's Portfolio");
+
+    }
+}
+
+adminLogin.addEventListener("click", async function() {
+
+    if (currentSession) {
+
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            alert(error.message);
             return;
         }
 
-        const entered = prompt("Admin password enter karein:");
+        await updateAdminMode(null);
 
-        if (entered === ADMIN_PASSWORD) {
+        alert("Admin logout successful.");
 
-            document.body.classList.add("admin-mode");
-
-            alert("Admin mode on. Ab aap pictures upload/change kar sakte hain.");
-
-        } else if (entered !== null) {
-
-            alert("Password ghalat hai.");
-
-        }
-
+        return;
     }
 
-});
+    const email = prompt("Admin email enter karein:");
 
+    if (!email) return;
 
-/* FULL SCREEN IMAGE VIEWER */
+    const password = prompt("Admin password enter karein:");
 
-const imageViewer = document.getElementById("imageViewer");
+    if (!password) return;
 
-const viewerImage = document.getElementById("viewerImage");
+    showStatus("Logging in...");
 
-document.addEventListener("click", function(event) {
+    const { data, error } =
+        await supabase.auth.signInWithPassword({
+            email: email.trim(),
+            password: password
+        });
 
-    const img = event.target.closest("img");
+    if (error) {
 
-    if (!img || img.id === "viewerImage") return;
+        showStatus("Login failed.");
 
-    if (!img.closest(".profile, .about, .gallery")) return;
+        alert("Login error: " + error.message);
 
-    viewerImage.src = img.src;
-
-    imageViewer.classList.add("open");
-
-});
-
-
-document.getElementById("viewerClose").addEventListener("click", function() {
-
-    imageViewer.classList.remove("open");
-
-    viewerImage.src = "";
-
-});
-
-
-imageViewer.addEventListener("click", function(event) {
-
-    if (event.target === imageViewer) {
-
-        imageViewer.classList.remove("open");
-
-        viewerImage.src = "";
-
+        return;
     }
 
+    await updateAdminMode(data.session);
+
+    alert("Admin login successful!");
+
 });
 
+/* RESTORE LOGIN SESSION */
 
-document.addEventListener("keydown", function(event) {
+async function checkLogin() {
 
-    if (event.key === "Escape") {
+    const { data, error } = await supabase.auth.getSession();
 
-        imageViewer.classList.remove("open");
-
-        viewerImage.src = "";
-
+    if (!error) {
+        await updateAdminMode(data.session);
     }
 
+}
+
+checkLogin();
+
+supabase.auth.onAuthStateChange((_event, session) => {
+    updateAdminMode(session);
 });
 
+/* =================================
+   STORAGE HELPERS
+================================= */
 
-/* IMAGE DATABASE */
+function publicUrl(path) {
 
-const DB_NAME = "SamiPortfolioImages";
+    const { data } =
+        supabase.storage.from(BUCKET).getPublicUrl(path);
 
-const STORE_NAME = "images";
+    return data.publicUrl + "?v=" + Date.now();
+
+}
+
+async function uploadFile(path, file) {
+
+    if (!currentSession) {
+        throw new Error("Please login as admin first.");
+    }
+
+    const { error } =
+        await supabase.storage.from(BUCKET).upload(
+            path,
+            file,
+            {
+                upsert: true,
+                contentType: file.type,
+                cacheControl: "3600"
+            }
+        );
+
+    if (error) throw error;
+
+    return publicUrl(path);
+
+}
+
+/* =================================
+   IMAGE RESTORE
+================================= */
+
+function restoreImage(path, image) {
+
+    const url = publicUrl(path);
+
+    image.onerror = function() {
+        image.onerror = null;
+        image.src =
+            "https://placehold.co/600x350/17243b/38bdf8?text=Upload+Your+Design";
+    };
+
+    image.src = url;
+
+}
+
+/* =================================
+   IMAGE UPLOAD SETUP
+================================= */
 
 const allowedTypes = [
     "image/jpeg",
@@ -743,140 +779,13 @@ const allowedTypes = [
     "image/webp"
 ];
 
-
-/* OPEN DATABASE */
-
-function openImageDB() {
-
-    return new Promise((resolve, reject) => {
-
-        const request = indexedDB.open(DB_NAME, 1);
-
-        request.onupgradeneeded = () => {
-
-            request.result.createObjectStore(STORE_NAME);
-
-        };
-
-        request.onsuccess = () => resolve(request.result);
-
-        request.onerror = () => reject(request.error);
-
-    });
-
-}
-
-
-/* SAVE IMAGE OR VIDEO */
-
-async function saveImage(key, file) {
-
-    const db = await openImageDB();
-
-    return new Promise((resolve, reject) => {
-
-        const tx = db.transaction(STORE_NAME, "readwrite");
-
-        tx.objectStore(STORE_NAME).put(file, key);
-
-        tx.oncomplete = () => {
-
-            db.close();
-
-            resolve();
-
-        };
-
-        tx.onerror = () => {
-
-            db.close();
-
-            reject(tx.error);
-
-        };
-
-    });
-
-}
-
-
-/* LOAD IMAGE OR VIDEO */
-
-async function loadImage(key) {
-
-    const db = await openImageDB();
-
-    return new Promise((resolve, reject) => {
-
-        const tx = db.transaction(STORE_NAME, "readonly");
-
-        const req = tx.objectStore(STORE_NAME).get(key);
-
-        req.onsuccess = () => {
-
-            const result = req.result;
-
-            db.close();
-
-            resolve(result);
-
-        };
-
-        req.onerror = () => {
-
-            db.close();
-
-            reject(req.error);
-
-        };
-
-    });
-
-}
-
-
-/* RESTORE SAVED IMAGE */
-
-async function restoreImage(key, img) {
-
-    try {
-
-        const file = await loadImage(key);
-
-        if (file) {
-
-            if (img.dataset.objectUrl) {
-
-                URL.revokeObjectURL(img.dataset.objectUrl);
-
-            }
-
-            const url = URL.createObjectURL(file);
-
-            img.src = url;
-
-            img.dataset.objectUrl = url;
-
-        }
-
-    } catch (error) {
-
-        console.error("Image restore error:", error);
-
-    }
-
-}
-
-
-/* PROFILE AND ABOUT UPLOAD */
-
-function setupUpload(inputId, imageId, storageKey) {
+function setupUpload(inputId, imageId, path) {
 
     const input = document.getElementById(inputId);
 
     const image = document.getElementById(imageId);
 
-    restoreImage(storageKey, image);
+    restoreImage(path, image);
 
     input.addEventListener("change", async function() {
 
@@ -886,35 +795,39 @@ function setupUpload(inputId, imageId, storageKey) {
 
         if (!allowedTypes.includes(file.type)) {
 
-            alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
+            alert("Sirf JPG, PNG aur WEBP pictures allowed hain.");
 
             this.value = "";
 
             return;
+        }
 
+        if (file.size > 10 * 1024 * 1024) {
+
+            alert("Image 10 MB se chhoti honi chahiye.");
+
+            this.value = "";
+
+            return;
         }
 
         try {
 
-            await saveImage(storageKey, file);
+            showStatus("Uploading picture...");
 
-            if (image.dataset.objectUrl) {
+            const url = await uploadFile(path, file);
 
-                URL.revokeObjectURL(image.dataset.objectUrl);
+            image.src = url;
 
-            }
+            showStatus("Picture successfully uploaded!");
 
-            const newUrl = URL.createObjectURL(file);
-
-            image.src = newUrl;
-
-            image.dataset.objectUrl = newUrl;
+            alert("Picture online save ho gayi!");
 
         } catch (error) {
 
-            alert("Picture save nahi ho saki. Browser storage check karein.");
-
             console.error(error);
+
+            alert("Upload failed: " + error.message);
 
         }
 
@@ -924,54 +837,45 @@ function setupUpload(inputId, imageId, storageKey) {
 
 }
 
+/* PROFILE AND ABOUT */
 
-/* TOP BANNER VIDEO UPLOAD AND RESTORE */
+setupUpload(
+    "photoUpload",
+    "profilePic",
+    "portfolio/profile-picture"
+);
+
+setupUpload(
+    "aboutUpload",
+    "aboutPic",
+    "portfolio/about-picture"
+);
+
+/* =================================
+   VIDEO BANNER
+================================= */
 
 const bannerVideo = document.getElementById("bannerVideo");
 
 const bannerUpload = document.getElementById("bannerUpload");
 
-const allowedVideoTypes = [
-    "video/mp4",
-    "video/webm",
-    "video/ogg"
-];
+const videoPath = "portfolio/top-banner-video";
 
+function restoreBanner() {
 
-/* RESTORE BANNER VIDEO */
+    bannerVideo.src = publicUrl(videoPath);
 
-async function restoreBannerVideo() {
+    bannerVideo.onloadedmetadata = function() {
+        bannerVideo.classList.add("has-video");
+    };
 
-    try {
-
-        const file = await loadImage("top-banner-video");
-
-        if (file) {
-
-            if (bannerVideo.dataset.objectUrl) {
-
-                URL.revokeObjectURL(bannerVideo.dataset.objectUrl);
-
-            }
-
-            const url = URL.createObjectURL(file);
-
-            bannerVideo.src = url;
-
-            bannerVideo.dataset.objectUrl = url;
-
-        }
-
-    } catch (error) {
-
-        console.error("Banner video restore error:", error);
-
-    }
+    bannerVideo.onerror = function() {
+        bannerVideo.classList.remove("has-video");
+    };
 
 }
 
-
-/* UPLOAD BANNER VIDEO */
+restoreBanner();
 
 bannerUpload.addEventListener("change", async function() {
 
@@ -979,41 +883,51 @@ bannerUpload.addEventListener("change", async function() {
 
     if (!file) return;
 
-    if (!allowedVideoTypes.includes(file.type)) {
+    const allowedVideos = [
+        "video/mp4",
+        "video/webm",
+        "video/ogg"
+    ];
 
-        alert("Sirf MP4, WEBM aur OGG video upload kar sakte hain.");
+    if (!allowedVideos.includes(file.type)) {
+
+        alert("Sirf MP4, WEBM aur OGG videos allowed hain.");
 
         this.value = "";
 
         return;
+    }
 
+    if (file.size > 50 * 1024 * 1024) {
+
+        alert("Video 50 MB se chhoti honi chahiye.");
+
+        this.value = "";
+
+        return;
     }
 
     try {
 
-        await saveImage("top-banner-video", file);
+        showStatus("Uploading banner video...");
 
-        if (bannerVideo.dataset.objectUrl) {
-
-            URL.revokeObjectURL(bannerVideo.dataset.objectUrl);
-
-        }
-
-        const url = URL.createObjectURL(file);
+        const url = await uploadFile(videoPath, file);
 
         bannerVideo.src = url;
 
-        bannerVideo.dataset.objectUrl = url;
-
         bannerVideo.load();
 
-        alert("Banner video save ho gayi.");
+        bannerVideo.classList.add("has-video");
+
+        showStatus("Banner video uploaded!");
+
+        alert("Banner video online save ho gayi!");
 
     } catch (error) {
 
-        alert("Video save nahi ho saki. Browser storage ya video file size check karein.");
-
         console.error(error);
+
+        alert("Video upload failed: " + error.message);
 
     }
 
@@ -1021,11 +935,9 @@ bannerUpload.addEventListener("change", async function() {
 
 });
 
-
-restoreBannerVideo();
-
-
-/* CREATE PORTFOLIO BOXES */
+/* =================================
+   CREATE PORTFOLIO BOXES
+================================= */
 
 function makeSlots(containerId, type, count) {
 
@@ -1045,18 +957,9 @@ function makeSlots(containerId, type, count) {
 
         image.alt = title;
 
-        image.src =
-            `https://placehold.co/600x350/17243b/38bdf8?text=${encodeURIComponent(title)}`;
-
-        image.id = type.toLowerCase() + "Image" + i;
-
-
         const heading = document.createElement("h3");
 
-        heading.className = "project-title";
-
         heading.textContent = title;
-
 
         const label = document.createElement("label");
 
@@ -1064,22 +967,18 @@ function makeSlots(containerId, type, count) {
 
         label.textContent = "📷 Upload Picture";
 
-
         const input = document.createElement("input");
 
         input.type = "file";
 
         input.accept = "image/jpeg,image/png,image/webp";
 
-        input.hidden = true;
-
         input.id = type.toLowerCase() + "Upload" + i;
 
         label.htmlFor = input.id;
 
-
-        const key = type.toLowerCase() + "-" + i;
-
+        const path =
+            "portfolio/" + type.toLowerCase() + "-" + i;
 
         const change = document.createElement("button");
 
@@ -1091,8 +990,11 @@ function makeSlots(containerId, type, count) {
 
         change.addEventListener("click", () => input.click());
 
+        /* RESTORE SAVED IMAGE */
 
-        /* UPLOAD PICTURE */
+        restoreImage(path, image);
+
+        /* UPLOAD IMAGE */
 
         input.addEventListener("change", async function() {
 
@@ -1102,35 +1004,39 @@ function makeSlots(containerId, type, count) {
 
             if (!allowedTypes.includes(file.type)) {
 
-                alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
+                alert("Sirf JPG, PNG aur WEBP allowed hain.");
 
                 this.value = "";
 
                 return;
+            }
 
+            if (file.size > 10 * 1024 * 1024) {
+
+                alert("Image 10 MB se chhoti honi chahiye.");
+
+                this.value = "";
+
+                return;
             }
 
             try {
 
-                await saveImage(key, file);
+                showStatus("Uploading " + title + "...");
 
-                if (image.dataset.objectUrl) {
-
-                    URL.revokeObjectURL(image.dataset.objectUrl);
-
-                }
-
-                const url = URL.createObjectURL(file);
+                const url = await uploadFile(path, file);
 
                 image.src = url;
 
-                image.dataset.objectUrl = url;
+                showStatus(title + " uploaded successfully!");
+
+                alert(title + " online save ho gayi!");
 
             } catch (error) {
 
-                alert("Picture save nahi ho saki.");
-
                 console.error(error);
+
+                alert("Upload failed: " + error.message);
 
             }
 
@@ -1138,10 +1044,13 @@ function makeSlots(containerId, type, count) {
 
         });
 
-
-        restoreImage(key, image);
-
-        card.append(image, heading, label, input, change);
+        card.append(
+            image,
+            heading,
+            label,
+            input,
+            change
+        );
 
         container.appendChild(card);
 
@@ -1149,23 +1058,7 @@ function makeSlots(containerId, type, count) {
 
 }
 
-
-/* SETUP PROFILE AND ABOUT UPLOAD */
-
-setupUpload(
-    "photoUpload",
-    "profilePic",
-    "profile-picture"
-);
-
-setupUpload(
-    "aboutUpload",
-    "aboutPic",
-    "about-picture"
-);
-
-
-/* CREATE 10 THUMBNAILS */
+/* 10 THUMBNAILS */
 
 makeSlots(
     "thumbnailGallery",
@@ -1173,8 +1066,7 @@ makeSlots(
     10
 );
 
-
-/* CREATE 10 POSTERS */
+/* 10 POSTERS */
 
 makeSlots(
     "posterGallery",
@@ -1182,14 +1074,69 @@ makeSlots(
     10
 );
 
-
-/* CREATE 10 LOGOS */
+/* 10 LOGOS */
 
 makeSlots(
     "logoGallery",
     "Logo",
     10
 );
+
+/* =================================
+   FULL SCREEN IMAGE VIEWER
+================================= */
+
+const imageViewer =
+    document.getElementById("imageViewer");
+
+const viewerImage =
+    document.getElementById("viewerImage");
+
+document.addEventListener("click", function(event) {
+
+    const img = event.target.closest("img");
+
+    if (!img) return;
+
+    if (
+        img.id === "viewerImage" ||
+        img.closest(".image-viewer")
+    ) return;
+
+    if (!img.closest(".profile, .about, .gallery")) return;
+
+    viewerImage.src = img.src;
+
+    imageViewer.classList.add("open");
+
+});
+
+function closeViewer() {
+
+    imageViewer.classList.remove("open");
+
+    viewerImage.src = "";
+
+}
+
+document.getElementById("viewerClose")
+.addEventListener("click", closeViewer);
+
+imageViewer.addEventListener("click", function(event) {
+
+    if (event.target === imageViewer) {
+        closeViewer();
+    }
+
+});
+
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+        closeViewer();
+    }
+
+});
 
 </script>
 
