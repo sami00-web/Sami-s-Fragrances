@@ -601,24 +601,30 @@ footer {
 
 <script>
 
-/* ADMIN PASSWORD */
+/* SUPABASE CONNECTION */
+const SUPABASE_URL = "https://zfxskbdcduxfibctvozn.supabase.co";
 
+const SUPABASE_KEY = "sb_publishable_w2l0pizQDij2QzDxCGFeoA_JutaNp5t";
+
+const BUCKET = "portfolio-images";
+
+const sb = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
+/* ADMIN PASSWORD */
 const ADMIN_PASSWORD = "sami8888";
 
-/* ADMIN MODE: CTRL + SHIFT + A */
-
 document.addEventListener("keydown", function(event) {
-
     if (
         event.ctrlKey &&
         event.shiftKey &&
         event.key.toLowerCase() === "a"
     ) {
-
         event.preventDefault();
 
         if (document.body.classList.contains("admin-mode")) {
-
             document.body.classList.remove("admin-mode");
             alert("Admin mode band ho gaya.");
             return;
@@ -627,168 +633,96 @@ document.addEventListener("keydown", function(event) {
         const entered = prompt("Admin password enter karein:");
 
         if (entered === ADMIN_PASSWORD) {
-
             document.body.classList.add("admin-mode");
-            alert("Admin mode on. Ab aap pictures upload/change kar sakte hain.");
-
+            alert("Admin mode ON. Upload kar sakte hain.");
         } else if (entered !== null) {
-
             alert("Password ghalat hai.");
         }
     }
 });
 
-/* IMAGE VIEWER */
-
-const imageViewer = document.getElementById("imageViewer");
-const viewerImage = document.getElementById("viewerImage");
-
-document.addEventListener("click", function(event) {
-
-    const img = event.target.closest("img");
-
-    if (!img || img.id === "viewerImage") return;
-
-    if (!img.closest(".profile, .about, .gallery")) return;
-
-    viewerImage.src = img.src;
-    imageViewer.classList.add("open");
-
-});
-
-document.getElementById("viewerClose").addEventListener("click", function() {
-
-    imageViewer.classList.remove("open");
-    viewerImage.src = "";
-
-});
-
-imageViewer.addEventListener("click", function(event) {
-
-    if (event.target === imageViewer) {
-        imageViewer.classList.remove("open");
-        viewerImage.src = "";
-    }
-
-});
-
-document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Escape") {
-        imageViewer.classList.remove("open");
-        viewerImage.src = "";
-    }
-
-});
-
-/* IMAGE DATABASE */
-
-const DB_NAME = "SamiPortfolioImages";
-const STORE_NAME = "images";
+/* SUPABASE IMAGE UPLOAD */
 
 const allowedTypes = [
     "image/jpeg",
     "image/png",
-    "image/webp"
+    "image/webp",
+    "image/gif"
 ];
 
-function openImageDB() {
+function getExtension(file) {
+    const extensions = {
+        "image/jpeg": "jpg",
+        "image/png": "png",
+        "image/webp": "webp",
+        "image/gif": "gif"
+    };
 
-    return new Promise((resolve, reject) => {
-
-        const request = indexedDB.open(DB_NAME, 1);
-
-        request.onupgradeneeded = () => {
-            request.result.createObjectStore(STORE_NAME);
-        };
-
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-
-    });
-
+    return extensions[file.type];
 }
 
-/* SAVE IMAGE */
+async function uploadImage(key, file) {
 
-async function saveImage(key, file) {
-
-    const db = await openImageDB();
-
-    return new Promise((resolve, reject) => {
-
-        const tx = db.transaction(STORE_NAME, "readwrite");
-
-        tx.objectStore(STORE_NAME).put(file, key);
-
-        tx.oncomplete = () => {
-            db.close();
-            resolve();
-        };
-
-        tx.onerror = () => {
-            db.close();
-            reject(tx.error);
-        };
-
-    });
-
-}
-
-/* LOAD IMAGE */
-
-async function loadImage(key) {
-
-    const db = await openImageDB();
-
-    return new Promise((resolve, reject) => {
-
-        const tx = db.transaction(STORE_NAME, "readonly");
-
-        const req = tx.objectStore(STORE_NAME).get(key);
-
-        req.onsuccess = () => {
-            const result = req.result;
-            db.close();
-            resolve(result);
-        };
-
-        req.onerror = () => {
-            db.close();
-            reject(req.error);
-        };
-
-    });
-
-}
-
-/* RESTORE SAVED IMAGE */
-
-async function restoreImage(key, img) {
-
-    try {
-
-        const file = await loadImage(key);
-
-        if (file) {
-
-            if (img.dataset.objectUrl) {
-                URL.revokeObjectURL(img.dataset.objectUrl);
-            }
-
-            const url = URL.createObjectURL(file);
-
-            img.src = url;
-            img.dataset.objectUrl = url;
-        }
-
-    } catch (error) {
-        console.error("Image restore error:", error);
+    if (!allowedTypes.includes(file.type)) {
+        throw new Error("Only JPG, PNG, WEBP and GIF allowed.");
     }
 
+    const extension = getExtension(file);
+    const path = "portfolio/" + key + "." + extension;
+
+    const { error } = await sb.storage
+        .from(BUCKET)
+        .upload(path, file, {
+            upsert: true,
+            contentType: file.type,
+            cacheControl: "3600"
+        });
+
+    if (error) throw error;
+
+    const { data } = sb.storage
+        .from(BUCKET)
+        .getPublicUrl(path);
+
+    return data.publicUrl + "?v=" + Date.now();
 }
 
-/* PROFILE AND ABOUT UPLOAD */
+/* RESTORE PUBLIC IMAGE */
+
+async function restoreImage(key, image) {
+
+    const extensions = ["jpg", "png", "webp", "gif"];
+
+    for (const extension of extensions) {
+
+        const path = "portfolio/" + key + "." + extension;
+
+        const { data } = sb.storage
+            .from(BUCKET)
+            .getPublicUrl(path);
+
+        try {
+            const response = await fetch(data.publicUrl, {
+                method: "HEAD"
+            });
+
+            if (response.ok) {
+                image.src = data.publicUrl + "?v=" +
+                    await getLastModified(data.publicUrl);
+                return;
+            }
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+}
+
+async function getLastModified(url) {
+    return Date.now();
+}
+
+/* PROFILE AND ABOUT PICTURES */
 
 function setupUpload(inputId, imageId, storageKey) {
 
@@ -800,42 +734,28 @@ function setupUpload(inputId, imageId, storageKey) {
     input.addEventListener("change", async function() {
 
         const file = this.files[0];
-
         if (!file) return;
 
-        if (!allowedTypes.includes(file.type)) {
-            alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
-            this.value = "";
-            return;
-        }
-
         try {
+            image.style.opacity = "0.5";
 
-            await saveImage(storageKey, file);
+            const url = await uploadImage(storageKey, file);
 
-            if (image.dataset.objectUrl) {
-                URL.revokeObjectURL(image.dataset.objectUrl);
-            }
+            image.src = url;
 
-            const newUrl = URL.createObjectURL(file);
-
-            image.src = newUrl;
-            image.dataset.objectUrl = newUrl;
+            alert("Picture Supabase par upload ho gayi!");
 
         } catch (error) {
-
-            alert("Picture save nahi ho saki. Browser storage check karein.");
             console.error(error);
-
+            alert("Upload failed: " + error.message);
         }
 
+        image.style.opacity = "1";
         this.value = "";
-
     });
-
 }
 
-/* WELCOME GIF UPLOAD */
+/* WELCOME GIF */
 
 const bannerInput = document.getElementById("bannerUpload");
 const bannerImage = document.getElementById("welcomeBanner");
@@ -845,40 +765,29 @@ restoreImage("welcome-banner", bannerImage);
 bannerInput.addEventListener("change", async function() {
 
     const file = this.files[0];
-
     if (!file) return;
 
     if (file.type !== "image/gif") {
-        alert("Sirf GIF animation upload kar sakte hain.");
+        alert("Sirf GIF upload karein.");
         this.value = "";
         return;
     }
 
     try {
-
-        await saveImage("welcome-banner", file);
-
-        if (bannerImage.dataset.objectUrl) {
-            URL.revokeObjectURL(bannerImage.dataset.objectUrl);
-        }
-
-        const url = URL.createObjectURL(file);
-
+        const url = await uploadImage("welcome-banner", file);
         bannerImage.src = url;
-        bannerImage.dataset.objectUrl = url;
+
+        alert("Welcome GIF upload ho gayi!");
 
     } catch (error) {
-
-        alert("Banner save nahi ho saka.");
         console.error(error);
-
+        alert("Banner upload failed: " + error.message);
     }
 
     this.value = "";
-
 });
 
-/* CREATE PORTFOLIO BOXES */
+/* CREATE 10 THUMBNAILS, POSTERS AND LOGOS */
 
 function makeSlots(containerId, type, count) {
 
@@ -890,6 +799,7 @@ function makeSlots(containerId, type, count) {
         card.className = "card";
 
         const title = type + " " + i;
+        const key = type.toLowerCase() + "-" + i;
 
         const image = document.createElement("img");
 
@@ -917,8 +827,6 @@ function makeSlots(containerId, type, count) {
 
         label.htmlFor = input.id;
 
-        const key = type.toLowerCase() + "-" + i;
-
         const change = document.createElement("button");
         change.type = "button";
         change.className = "change-btn admin-only";
@@ -929,65 +837,86 @@ function makeSlots(containerId, type, count) {
         input.addEventListener("change", async function() {
 
             const file = this.files[0];
-
             if (!file) return;
-
-            if (!allowedTypes.includes(file.type)) {
-                alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
-                this.value = "";
-                return;
-            }
 
             try {
 
-                await saveImage(key, file);
+                image.style.opacity = "0.5";
 
-                if (image.dataset.objectUrl) {
-                    URL.revokeObjectURL(image.dataset.objectUrl);
-                }
-
-                const url = URL.createObjectURL(file);
+                const url = await uploadImage(key, file);
 
                 image.src = url;
-                image.dataset.objectUrl = url;
+
+                alert(title + " successfully upload ho gaya!");
 
             } catch (error) {
 
-                alert("Picture save nahi ho saki.");
                 console.error(error);
+                alert("Upload failed: " + error.message);
 
             }
 
+            image.style.opacity = "1";
             this.value = "";
-
         });
 
         restoreImage(key, image);
 
         card.append(image, heading, label, input, change);
         container.appendChild(card);
-
     }
-
 }
 
-/* SETUP PROFILE AND ABOUT UPLOAD */
+/* PROFILE AND ABOUT SETUP */
 
 setupUpload("photoUpload", "profilePic", "profile-picture");
 
 setupUpload("aboutUpload", "aboutPic", "about-picture");
 
-/* CREATE 10 THUMBNAILS */
+/* PORTFOLIO BOXES */
 
 makeSlots("thumbnailGallery", "Thumbnail", 10);
 
-/* CREATE 10 POSTERS */
-
 makeSlots("posterGallery", "Poster", 10);
 
-/* CREATE 10 LOGOS */
-
 makeSlots("logoGallery", "Logo", 10);
+
+/* IMAGE VIEWER */
+
+const imageViewer = document.getElementById("imageViewer");
+const viewerImage = document.getElementById("viewerImage");
+
+document.addEventListener("click", function(event) {
+
+    const img = event.target.closest("img");
+
+    if (!img || img.id === "viewerImage") return;
+
+    if (!img.closest(".profile, .about, .gallery")) return;
+
+    viewerImage.src = img.src;
+    imageViewer.classList.add("open");
+});
+
+document.getElementById("viewerClose").addEventListener("click", function() {
+    imageViewer.classList.remove("open");
+    viewerImage.src = "";
+});
+
+imageViewer.addEventListener("click", function(event) {
+    if (event.target === imageViewer) {
+        imageViewer.classList.remove("open");
+        viewerImage.src = "";
+    }
+});
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Escape") {
+        imageViewer.classList.remove("open");
+        viewerImage.src = "";
+    }
+});
+
 
 </script>
 
