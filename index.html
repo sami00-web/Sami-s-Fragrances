@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,397 +5,385 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sami Niazi | Graphic Designer Portfolio</title>
 
+<!-- SUPABASE LIBRARY -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-    scroll-behavior: smooth;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+    scroll-behavior:smooth;
 }
 
 body {
-    background: #080e1c;
-    color: white;
+    background:#080e1c;
+    color:white;
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 8%;
-    background: #101a30;
-    position: sticky;
-    top: 0;
-    z-index: 10;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px 8%;
+    background:#101a30;
+    position:sticky;
+    top:0;
+    z-index:10;
+    gap:15px;
 }
 
 .logo {
-    font-size: 25px;
-    font-weight: bold;
-    color: #38bdf8;
+    font-size:25px;
+    font-weight:bold;
+    color:#38bdf8;
+}
+
+nav {
+    display:flex;
+    flex-wrap:wrap;
+    gap:15px;
 }
 
 nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 20px;
+    color:white;
+    text-decoration:none;
 }
 
 nav a:hover {
-    color: #38bdf8;
+    color:#38bdf8;
 }
 
-/* WELCOME BANNER */
-
-.banner-area {
-    width: 100%;
-    padding: 15px 10%;
-    text-align: center;
+.btn {
+    display:inline-block;
+    background:#0ea5e9;
+    color:white;
+    padding:12px 22px;
+    border:0;
+    border-radius:7px;
+    text-decoration:none;
+    cursor:pointer;
+    margin:5px;
 }
 
-.welcome-banner {
-    display: block;
-    width: 1200px;
-    max-width: 100%;
-    height: 240px;
-    object-fit: cover;
-    border: 2px solid #38bdf8;
-    border-radius: 8px;
-    margin: 0 auto;
-    background: #17243b;
+.btn:hover {
+    background:#0284c7;
 }
 
-.banner-upload {
-    display: none;
-    margin: 10px auto;
-    color: #38bdf8;
-    cursor: pointer;
-}
-
-body.admin-mode .banner-upload {
-    display: inline-block;
+.admin-btn {
+    background:#16a34a;
 }
 
 .hero {
-    min-height: 75vh;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 60px 10%;
-    gap: 40px;
+    min-height:75vh;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:60px 10%;
+    gap:40px;
 }
 
 .hero-content {
-    max-width: 600px;
+    max-width:600px;
 }
 
 .hero h1 {
-    font-size: 50px;
-    margin: 15px 0;
+    font-size:50px;
+    margin:15px 0;
 }
 
 .hero h1 span,
 .hero h2 {
-    color: #38bdf8;
+    color:#38bdf8;
 }
 
 .hero h2 {
-    margin-bottom: 20px;
+    margin-bottom:20px;
 }
 
 .hero p,
 .about p,
 .card p,
 .contact p {
-    color: #b8c5d8;
-    line-height: 1.8;
+    color:#b8c5d8;
+    line-height:1.8;
 }
 
 .hero p {
-    margin-bottom: 25px;
-}
-
-.btn {
-    display: inline-block;
-    background: #0ea5e9;
-    color: white;
-    padding: 13px 24px;
-    border-radius: 7px;
-    text-decoration: none;
-    border: 0;
-    cursor: pointer;
-    margin: 5px;
-}
-
-.btn:hover {
-    background: #0284c7;
+    margin-bottom:25px;
 }
 
 .profile {
-    text-align: center;
+    text-align:center;
 }
 
 .profile img {
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    object-fit: contain;
-    border: 5px solid #38bdf8;
-    background: #17243b;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    object-fit:contain;
+    border:5px solid #38bdf8;
+    background:#17243b;
+}
+
+section {
+    padding:75px 10%;
+}
+
+.section-title {
+    text-align:center;
+    font-size:35px;
+    margin-bottom:40px;
+}
+
+.section-title span {
+    color:#38bdf8;
+}
+
+.about p {
+    text-align:center;
+    max-width:800px;
+    margin:auto;
+}
+
+.about-image {
+    width:200px;
+    height:200px;
+    object-fit:contain;
+    border-radius:15px;
+    display:block;
+    margin:25px auto;
+    border:3px solid #38bdf8;
+    background:#17243b;
+}
+
+.gallery {
+    display:grid;
+    gap:20px;
+    grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+}
+
+.card {
+    background:#111d33;
+    padding:15px;
+    border-radius:12px;
+    text-align:center;
+    border:1px solid #243653;
+    transition:.3s;
+    min-width:0;
+}
+
+.card:hover {
+    transform:translateY(-4px);
+    border-color:#38bdf8;
+}
+
+.card h3 {
+    color:#38bdf8;
+    margin-bottom:12px;
+}
+
+.project-image {
+    display:block;
+    width:100%;
+    height:190px;
+    object-fit:contain;
+    border-radius:8px;
+    margin-bottom:15px;
+    background:#17243b;
+    border:1px solid #243653;
+    cursor:zoom-in;
+}
+
+#thumbnailGallery .card {
+    padding:12px;
+    border:none;
+    background:transparent;
+}
+
+#thumbnailGallery .project-image {
+    aspect-ratio:16/9;
+    height:auto;
+    object-fit:cover;
+    border:2px solid #38bdf8;
+    padding:3px;
+}
+
+.poster-grid .project-image {
+    height:260px;
+    border:2px solid #38bdf8;
+    padding:3px;
+}
+
+.logo-grid .project-image {
+    width:170px;
+    height:170px;
+    aspect-ratio:1/1;
+    object-fit:contain;
+    border:2px solid #38bdf8;
+    border-radius:50%;
+    margin:0 auto 15px;
+}
+
+.video-banner {
+    width:100%;
+    padding:24px 8%;
+    background:#080e1c;
+}
+
+.video-banner video {
+    display:none;
+    width:100%;
+    max-height:380px;
+    aspect-ratio:16/6;
+    object-fit:cover;
+    border:2px solid #38bdf8;
+    border-radius:12px;
+    background:#111d33;
+}
+
+.video-banner video.has-video {
+    display:block;
+}
+
+.banner-controls {
+    text-align:center;
+    margin-top:12px;
+}
+
+.upload-actions {
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
 }
 
 .upload,
 .project-upload {
-    display: inline-block;
-    margin: 12px auto;
-    color: #38bdf8;
-    cursor: pointer;
-    text-align: center;
-}
-
-section {
-    padding: 75px 10%;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 35px;
-    margin-bottom: 40px;
-}
-
-.section-title span {
-    color: #38bdf8;
-}
-
-.about p {
-    text-align: center;
-    max-width: 800px;
-    margin: auto;
-}
-
-.about-image {
-    width: 200px;
-    height: 200px;
-    object-fit: contain;
-    border-radius: 15px;
-    display: block;
-    margin: 25px auto;
-    border: 3px solid #38bdf8;
-    background: #17243b;
-}
-
-.card {
-    background: #111d33;
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    border: 1px solid #243653;
-    transition: .3s;
-    min-width: 0;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #38bdf8;
-}
-
-.card h3 {
-    color: #38bdf8;
-    margin-bottom: 12px;
-}
-
-.gallery {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-}
-
-.gallery .card {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-}
-
-.project-image {
-    width: 100%;
-    height: 190px;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    background: #17243b;
-    border: 1px solid #243653;
-    cursor: zoom-in;
-}
-
-/* THUMBNAILS */
-
-#thumbnailGallery .card {
-    padding: 12px;
-    border: none;
-    background: transparent;
-    box-shadow: none;
-}
-
-#thumbnailGallery .project-image {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    object-fit: cover;
-    border: none;
-    border-radius: 0;
-    margin: 0 0 12px;
-}
-
-/* POSTERS */
-
-.poster-grid .project-image {
-    height: 260px;
-    border: 2px solid #38bdf8;
-    border-radius: 8px;
-    padding: 3px;
-}
-
-/* LOGOS */
-
-.logo-grid .project-image {
-    width: 170px;
-    height: 170px;
-    aspect-ratio: 1 / 1;
-    object-fit: contain;
-    border: 2px solid #38bdf8;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    background: #17243b;
-}
-
-.upload-actions {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    display:none;
+    margin:12px auto;
+    color:#38bdf8;
+    cursor:pointer;
+    text-align:center;
 }
 
 .change-btn {
-    background: #243653;
-    color: #fff;
-    border: 1px solid #38bdf8;
-    padding: 9px 14px;
-    border-radius: 6px;
-    cursor: pointer;
-}
-
-.change-btn:hover {
-    background: #0c4a6e;
+    display:none;
+    background:#243653;
+    color:white;
+    border:1px solid #38bdf8;
+    padding:9px 14px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 .admin-only {
-    display: none !important;
+    display:none !important;
 }
 
 body.admin-mode .admin-only {
-    display: inline-block !important;
+    display:inline-block !important;
 }
 
 .contact {
-    text-align: center;
+    text-align:center;
 }
 
 .contact p {
-    margin: 15px;
+    margin:15px;
 }
 
 .contact a {
-    color: #38bdf8;
+    color:#38bdf8;
 }
 
 footer {
-    background: #101a30;
-    text-align: center;
-    padding: 25px;
-    color: #9caec6;
+    background:#101a30;
+    text-align:center;
+    padding:25px;
+    color:#9caec6;
 }
 
-/* FULL SCREEN IMAGE */
-
 .image-viewer {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, .95);
-    z-index: 9999;
-    justify-content: center;
-    align-items: center;
-    padding: 25px;
+    display:none;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    z-index:9999;
+    justify-content:center;
+    align-items:center;
+    padding:25px;
 }
 
 .image-viewer.open {
-    display: flex;
+    display:flex;
 }
 
 .image-viewer img {
-    max-width: 95%;
-    max-height: 90vh;
-    object-fit: contain;
+    max-width:95%;
+    max-height:90vh;
+    object-fit:contain;
 }
 
 .viewer-close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-    color: white;
-    background: #e11d48;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 25px;
-    cursor: pointer;
+    position:absolute;
+    top:20px;
+    right:30px;
+    color:white;
+    background:#e11d48;
+    border:none;
+    border-radius:50%;
+    width:45px;
+    height:45px;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.status {
+    text-align:center;
+    color:#38bdf8;
+    padding:10px;
+}
+
+input[type="file"] {
+    display:none;
 }
 
 @media(max-width:750px) {
     header {
-        flex-direction: column;
-        gap: 18px;
+        flex-direction:column;
+        gap:18px;
     }
 
     nav {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 12px;
-    }
-
-    nav a {
-        margin: 0;
-    }
-
-    .banner-area {
-        padding: 12px 5%;
-    }
-
-    .welcome-banner {
-        height: auto;
-        aspect-ratio: 5 / 1;
+        justify-content:center;
     }
 
     .hero {
-        flex-direction: column-reverse;
-        text-align: center;
+        flex-direction:column-reverse;
+        text-align:center;
     }
 
     .hero h1 {
-        font-size: 36px;
+        font-size:36px;
     }
 
     .profile img {
-        width: 220px;
-        height: 220px;
+        width:220px;
+        height:220px;
     }
 
     section {
-        padding: 55px 6%;
+        padding:55px 6%;
+    }
+
+    .video-banner {
+        padding:18px 6%;
+    }
+
+    .video-banner video {
+        aspect-ratio:16/9;
     }
 }
 </style>
@@ -414,39 +401,45 @@ footer {
         <a href="#projects">Portfolio</a>
         <a href="#contact">Contact</a>
     </nav>
+
+    <button class="btn admin-btn" id="adminLogin">
+        Admin Login
+    </button>
 </header>
 
-<!-- WELCOME BANNER -->
+<div class="status" id="status">Welcome to Sami's Portfolio</div>
 
-<div class="banner-area">
+<!-- VIDEO BANNER -->
 
-    <img
-        id="welcomeBanner"
-        class="welcome-banner"
-        src="https://placehold.co/1200x240/17243b/38bdf8?text=Welcome+To+My+Portfolio"
-        alt="Welcome Banner"
-    >
+<section class="video-banner" id="topBanner">
 
-    <label class="banner-upload" for="bannerUpload">
-        Upload / Change Welcome GIF
-    </label>
+    <video id="bannerVideo" controls playsinline preload="metadata">
+        Your browser does not support video playback.
+    </video>
 
-    <input
-        type="file"
-        id="bannerUpload"
-        accept="image/gif"
-        hidden
-    >
+    <div class="banner-controls">
 
-</div>
+        <label class="upload admin-only" for="bannerUpload">
+            🎬 Upload / Change Banner Video
+        </label>
+
+        <input type="file" id="bannerUpload"
+        accept="video/mp4,video/webm,video/ogg">
+
+    </div>
+
+</section>
 
 <!-- HOME -->
 
 <div class="hero" id="home">
 
     <div class="hero-content">
+
         <h2>Hello, I'm</h2>
+
         <h1>Sami <span>Niazi</span></h1>
+
         <h2>Graphic Designer</h2>
 
         <p>
@@ -457,24 +450,23 @@ footer {
 
         <a href="#projects" class="btn">View My Work</a>
         <a href="#contact" class="btn">Contact Me</a>
+
     </div>
 
     <div class="profile">
 
-        <img
-            id="profilePic"
-            alt="Sami Profile"
-            src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
-        >
+        <img id="profilePic"
+        alt="Sami Profile"
+        src="https://placehold.co/300x300/17243b/38bdf8?text=Sami">
 
         <div class="upload-actions">
             <label class="upload admin-only" for="photoUpload">
-                Upload / Change Profile Picture
+                📷 Upload / Change Profile Picture
             </label>
         </div>
 
         <input type="file" id="photoUpload"
-            accept="image/jpeg,image/png,image/webp" hidden>
+        accept="image/jpeg,image/png,image/webp">
 
     </div>
 
@@ -488,21 +480,19 @@ footer {
         About <span>Me</span>
     </h2>
 
-    <img
-        id="aboutPic"
-        class="about-image"
-        src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
-        alt="About Sami"
-    >
+    <img id="aboutPic"
+    class="about-image"
+    src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
+    alt="About Sami">
 
     <div class="upload-actions">
         <label class="upload admin-only" for="aboutUpload">
-            Upload / Change About Picture
+            📷 Upload / Change About Picture
         </label>
     </div>
 
     <input type="file" id="aboutUpload"
-        accept="image/jpeg,image/png,image/webp" hidden>
+    accept="image/jpeg,image/png,image/webp">
 
     <p>
         My name is Sami Niazi. I am passionate about Graphic
@@ -587,7 +577,7 @@ footer {
     <p>© 2026 Sami Niazi | All Rights Reserved</p>
 </footer>
 
-<!-- FULL SCREEN IMAGE VIEWER -->
+<!-- FULL SCREEN VIEWER -->
 
 <div class="image-viewer" id="imageViewer">
 
@@ -601,193 +591,352 @@ footer {
 
 <script>
 
-/* SUPABASE CONNECTION */
-const SUPABASE_URL = "https://zfxskbdcduxfibctvozn.supabase.co";
+/* =================================
+   SUPABASE CONNECTION
+================================= */
 
-const SUPABASE_KEY = "sb_publishable_w2l0pizQDij2QzDxCGFeoA_JutaNp5t";
+const SUPABASE_URL =
+"https://zfxskbdcduxfibctvozn.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_w2l0pizQDij2QzDxCGFeoA_JutaNp5t";
 
 const BUCKET = "portfolio-images";
 
-const sb = window.supabase.createClient(
+const supabase = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
 
-/* ADMIN PASSWORD */
-const ADMIN_PASSWORD = "sami8888";
+let currentSession = null;
 
-document.addEventListener("keydown", function(event) {
-    if (
-        event.ctrlKey &&
-        event.shiftKey &&
-        event.key.toLowerCase() === "a"
-    ) {
-        event.preventDefault();
+const statusBox = document.getElementById("status");
 
-        if (document.body.classList.contains("admin-mode")) {
-            document.body.classList.remove("admin-mode");
-            alert("Admin mode band ho gaya.");
+function showStatus(message) {
+    statusBox.textContent = message;
+}
+
+/* =================================
+   ADMIN LOGIN
+================================= */
+
+const adminLogin = document.getElementById("adminLogin");
+
+async function updateAdminMode(session) {
+
+    currentSession = session;
+
+    if (session) {
+
+        document.body.classList.add("admin-mode");
+
+        adminLogin.textContent = "Admin Logout";
+
+        adminLogin.classList.add("admin-btn");
+
+        showStatus("Admin logged in. You can upload your work.");
+
+    } else {
+
+        document.body.classList.remove("admin-mode");
+
+        adminLogin.textContent = "Admin Login";
+
+        showStatus("Welcome to Sami's Portfolio");
+
+    }
+}
+
+adminLogin.addEventListener("click", async function() {
+
+    if (currentSession) {
+
+        const { error } = await supabase.auth.signOut();
+
+        if (error) {
+            alert(error.message);
             return;
         }
 
-        const entered = prompt("Admin password enter karein:");
+        await updateAdminMode(null);
 
-        if (entered === ADMIN_PASSWORD) {
-            document.body.classList.add("admin-mode");
-            alert("Admin mode ON. Upload kar sakte hain.");
-        } else if (entered !== null) {
-            alert("Password ghalat hai.");
-        }
+        alert("Admin logout successful.");
+
+        return;
     }
+
+    const email = prompt("Admin email enter karein:");
+
+    if (!email) return;
+
+    const password = prompt("Admin password enter karein:");
+
+    if (!password) return;
+
+    showStatus("Logging in...");
+
+    const { data, error } =
+        await supabase.auth.signInWithPassword({
+            email: email.trim(),
+            password: password
+        });
+
+    if (error) {
+
+        showStatus("Login failed.");
+
+        alert("Login error: " + error.message);
+
+        return;
+    }
+
+    await updateAdminMode(data.session);
+
+    alert("Admin login successful!");
+
 });
 
-/* SUPABASE IMAGE UPLOAD */
+/* RESTORE LOGIN SESSION */
+
+async function checkLogin() {
+
+    const { data, error } = await supabase.auth.getSession();
+
+    if (!error) {
+        await updateAdminMode(data.session);
+    }
+
+}
+
+checkLogin();
+
+supabase.auth.onAuthStateChange((_event, session) => {
+    updateAdminMode(session);
+});
+
+/* =================================
+   STORAGE HELPERS
+================================= */
+
+function publicUrl(path) {
+
+    const { data } =
+        supabase.storage.from(BUCKET).getPublicUrl(path);
+
+    return data.publicUrl + "?v=" + Date.now();
+
+}
+
+async function uploadFile(path, file) {
+
+    if (!currentSession) {
+        throw new Error("Please login as admin first.");
+    }
+
+    const { error } =
+        await supabase.storage.from(BUCKET).upload(
+            path,
+            file,
+            {
+                upsert: true,
+                contentType: file.type,
+                cacheControl: "3600"
+            }
+        );
+
+    if (error) throw error;
+
+    return publicUrl(path);
+
+}
+
+/* =================================
+   IMAGE RESTORE
+================================= */
+
+function restoreImage(path, image) {
+
+    const url = publicUrl(path);
+
+    image.onerror = function() {
+        image.onerror = null;
+        image.src =
+            "https://placehold.co/600x350/17243b/38bdf8?text=Upload+Your+Design";
+    };
+
+    image.src = url;
+
+}
+
+/* =================================
+   IMAGE UPLOAD SETUP
+================================= */
 
 const allowedTypes = [
     "image/jpeg",
     "image/png",
-    "image/webp",
-    "image/gif"
+    "image/webp"
 ];
 
-function getExtension(file) {
-    const extensions = {
-        "image/jpeg": "jpg",
-        "image/png": "png",
-        "image/webp": "webp",
-        "image/gif": "gif"
-    };
-
-    return extensions[file.type];
-}
-
-async function uploadImage(key, file) {
-
-    if (!allowedTypes.includes(file.type)) {
-        throw new Error("Only JPG, PNG, WEBP and GIF allowed.");
-    }
-
-    const extension = getExtension(file);
-    const path = "portfolio/" + key + "." + extension;
-
-    const { error } = await sb.storage
-        .from(BUCKET)
-        .upload(path, file, {
-            upsert: true,
-            contentType: file.type,
-            cacheControl: "3600"
-        });
-
-    if (error) throw error;
-
-    const { data } = sb.storage
-        .from(BUCKET)
-        .getPublicUrl(path);
-
-    return data.publicUrl + "?v=" + Date.now();
-}
-
-/* RESTORE PUBLIC IMAGE */
-
-async function restoreImage(key, image) {
-
-    const extensions = ["jpg", "png", "webp", "gif"];
-
-    for (const extension of extensions) {
-
-        const path = "portfolio/" + key + "." + extension;
-
-        const { data } = sb.storage
-            .from(BUCKET)
-            .getPublicUrl(path);
-
-        try {
-            const response = await fetch(data.publicUrl, {
-                method: "HEAD"
-            });
-
-            if (response.ok) {
-                image.src = data.publicUrl + "?v=" +
-                    await getLastModified(data.publicUrl);
-                return;
-            }
-
-        } catch (error) {
-            console.error(error);
-        }
-    }
-}
-
-async function getLastModified(url) {
-    return Date.now();
-}
-
-/* PROFILE AND ABOUT PICTURES */
-
-function setupUpload(inputId, imageId, storageKey) {
+function setupUpload(inputId, imageId, path) {
 
     const input = document.getElementById(inputId);
+
     const image = document.getElementById(imageId);
 
-    restoreImage(storageKey, image);
+    restoreImage(path, image);
 
     input.addEventListener("change", async function() {
 
         const file = this.files[0];
+
         if (!file) return;
 
-        try {
-            image.style.opacity = "0.5";
+        if (!allowedTypes.includes(file.type)) {
 
-            const url = await uploadImage(storageKey, file);
+            alert("Sirf JPG, PNG aur WEBP pictures allowed hain.");
+
+            this.value = "";
+
+            return;
+        }
+
+        if (file.size > 10 * 1024 * 1024) {
+
+            alert("Image 10 MB se chhoti honi chahiye.");
+
+            this.value = "";
+
+            return;
+        }
+
+        try {
+
+            showStatus("Uploading picture...");
+
+            const url = await uploadFile(path, file);
 
             image.src = url;
 
-            alert("Picture Supabase par upload ho gayi!");
+            showStatus("Picture successfully uploaded!");
+
+            alert("Picture online save ho gayi!");
 
         } catch (error) {
+
             console.error(error);
+
             alert("Upload failed: " + error.message);
+
         }
 
-        image.style.opacity = "1";
         this.value = "";
+
     });
+
 }
 
-/* WELCOME GIF */
+/* PROFILE AND ABOUT */
 
-const bannerInput = document.getElementById("bannerUpload");
-const bannerImage = document.getElementById("welcomeBanner");
+setupUpload(
+    "photoUpload",
+    "profilePic",
+    "portfolio/profile-picture"
+);
 
-restoreImage("welcome-banner", bannerImage);
+setupUpload(
+    "aboutUpload",
+    "aboutPic",
+    "portfolio/about-picture"
+);
 
-bannerInput.addEventListener("change", async function() {
+/* =================================
+   VIDEO BANNER
+================================= */
+
+const bannerVideo = document.getElementById("bannerVideo");
+
+const bannerUpload = document.getElementById("bannerUpload");
+
+const videoPath = "portfolio/top-banner-video";
+
+function restoreBanner() {
+
+    bannerVideo.src = publicUrl(videoPath);
+
+    bannerVideo.onloadedmetadata = function() {
+        bannerVideo.classList.add("has-video");
+    };
+
+    bannerVideo.onerror = function() {
+        bannerVideo.classList.remove("has-video");
+    };
+
+}
+
+restoreBanner();
+
+bannerUpload.addEventListener("change", async function() {
 
     const file = this.files[0];
+
     if (!file) return;
 
-    if (file.type !== "image/gif") {
-        alert("Sirf GIF upload karein.");
+    const allowedVideos = [
+        "video/mp4",
+        "video/webm",
+        "video/ogg"
+    ];
+
+    if (!allowedVideos.includes(file.type)) {
+
+        alert("Sirf MP4, WEBM aur OGG videos allowed hain.");
+
         this.value = "";
+
+        return;
+    }
+
+    if (file.size > 50 * 1024 * 1024) {
+
+        alert("Video 50 MB se chhoti honi chahiye.");
+
+        this.value = "";
+
         return;
     }
 
     try {
-        const url = await uploadImage("welcome-banner", file);
-        bannerImage.src = url;
 
-        alert("Welcome GIF upload ho gayi!");
+        showStatus("Uploading banner video...");
+
+        const url = await uploadFile(videoPath, file);
+
+        bannerVideo.src = url;
+
+        bannerVideo.load();
+
+        bannerVideo.classList.add("has-video");
+
+        showStatus("Banner video uploaded!");
+
+        alert("Banner video online save ho gayi!");
 
     } catch (error) {
+
         console.error(error);
-        alert("Banner upload failed: " + error.message);
+
+        alert("Video upload failed: " + error.message);
+
     }
 
     this.value = "";
+
 });
 
-/* CREATE 10 THUMBNAILS, POSTERS AND LOGOS */
+/* =================================
+   CREATE PORTFOLIO BOXES
+================================= */
 
 function makeSlots(containerId, type, count) {
 
@@ -796,129 +945,200 @@ function makeSlots(containerId, type, count) {
     for (let i = 1; i <= count; i++) {
 
         const card = document.createElement("div");
+
         card.className = "card";
 
         const title = type + " " + i;
-        const key = type.toLowerCase() + "-" + i;
 
         const image = document.createElement("img");
 
         image.className = "project-image";
+
         image.alt = title;
 
-        image.src =
-            `https://placehold.co/600x350/17243b/38bdf8?text=${encodeURIComponent(title)}`;
-
-        image.id = type.toLowerCase() + "Image" + i;
-
         const heading = document.createElement("h3");
-        heading.className = "project-title";
+
         heading.textContent = title;
 
         const label = document.createElement("label");
+
         label.className = "project-upload admin-only";
-        label.textContent = "Upload Picture";
+
+        label.textContent = "📷 Upload Picture";
 
         const input = document.createElement("input");
+
         input.type = "file";
+
         input.accept = "image/jpeg,image/png,image/webp";
-        input.hidden = true;
+
         input.id = type.toLowerCase() + "Upload" + i;
 
         label.htmlFor = input.id;
 
+        const path =
+            "portfolio/" + type.toLowerCase() + "-" + i;
+
         const change = document.createElement("button");
+
         change.type = "button";
+
         change.className = "change-btn admin-only";
+
         change.textContent = "Change Picture";
 
         change.addEventListener("click", () => input.click());
 
+        /* RESTORE SAVED IMAGE */
+
+        restoreImage(path, image);
+
+        /* UPLOAD IMAGE */
+
         input.addEventListener("change", async function() {
 
             const file = this.files[0];
+
             if (!file) return;
+
+            if (!allowedTypes.includes(file.type)) {
+
+                alert("Sirf JPG, PNG aur WEBP allowed hain.");
+
+                this.value = "";
+
+                return;
+            }
+
+            if (file.size > 10 * 1024 * 1024) {
+
+                alert("Image 10 MB se chhoti honi chahiye.");
+
+                this.value = "";
+
+                return;
+            }
 
             try {
 
-                image.style.opacity = "0.5";
+                showStatus("Uploading " + title + "...");
 
-                const url = await uploadImage(key, file);
+                const url = await uploadFile(path, file);
 
                 image.src = url;
 
-                alert(title + " successfully upload ho gaya!");
+                showStatus(title + " uploaded successfully!");
+
+                alert(title + " online save ho gayi!");
 
             } catch (error) {
 
                 console.error(error);
+
                 alert("Upload failed: " + error.message);
 
             }
 
-            image.style.opacity = "1";
             this.value = "";
+
         });
 
-        restoreImage(key, image);
+        card.append(
+            image,
+            heading,
+            label,
+            input,
+            change
+        );
 
-        card.append(image, heading, label, input, change);
         container.appendChild(card);
+
     }
+
 }
 
-/* PROFILE AND ABOUT SETUP */
+/* 10 THUMBNAILS */
 
-setupUpload("photoUpload", "profilePic", "profile-picture");
+makeSlots(
+    "thumbnailGallery",
+    "Thumbnail",
+    10
+);
 
-setupUpload("aboutUpload", "aboutPic", "about-picture");
+/* 10 POSTERS */
 
-/* PORTFOLIO BOXES */
+makeSlots(
+    "posterGallery",
+    "Poster",
+    10
+);
 
-makeSlots("thumbnailGallery", "Thumbnail", 10);
+/* 10 LOGOS */
 
-makeSlots("posterGallery", "Poster", 10);
+makeSlots(
+    "logoGallery",
+    "Logo",
+    10
+);
 
-makeSlots("logoGallery", "Logo", 10);
+/* =================================
+   FULL SCREEN IMAGE VIEWER
+================================= */
 
-/* IMAGE VIEWER */
+const imageViewer =
+    document.getElementById("imageViewer");
 
-const imageViewer = document.getElementById("imageViewer");
-const viewerImage = document.getElementById("viewerImage");
+const viewerImage =
+    document.getElementById("viewerImage");
 
 document.addEventListener("click", function(event) {
 
     const img = event.target.closest("img");
 
-    if (!img || img.id === "viewerImage") return;
+    if (!img) return;
+
+    if (
+        img.id === "viewerImage" ||
+        img.closest(".image-viewer")
+    ) return;
 
     if (!img.closest(".profile, .about, .gallery")) return;
 
     viewerImage.src = img.src;
+
     imageViewer.classList.add("open");
+
 });
 
-document.getElementById("viewerClose").addEventListener("click", function() {
+function closeViewer() {
+
     imageViewer.classList.remove("open");
+
     viewerImage.src = "";
-});
+
+}
+
+document.getElementById("viewerClose")
+.addEventListener("click", closeViewer);
 
 imageViewer.addEventListener("click", function(event) {
+
     if (event.target === imageViewer) {
-        imageViewer.classList.remove("open");
-        viewerImage.src = "";
+        closeViewer();
     }
+
 });
 
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Escape") {
-        imageViewer.classList.remove("open");
-        viewerImage.src = "";
-    }
-});
 
+    if (event.key === "Escape") {
+        closeViewer();
+    }
+
+});
 
 </script>
 
 </body>
 </html>
+  is code changing nahi karna hain bas itna kar do ke clint ko picture nazar aye
