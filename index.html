@@ -90,7 +90,9 @@ body.admin-mode .banner-upload {
     margin: 15px 0;
 }
 
-.hero h1 span, .hero h2 { color: #38bdf8; }
+.hero h1 span, .hero h2 {
+    color: #38bdf8;
+}
 
 .hero h2 { margin-bottom: 20px; }
 
@@ -172,22 +174,11 @@ section { padding: 75px 10%; }
     text-align: center;
     border: 1px solid #243653;
     min-width: 0;
-    transition: .3s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    border-color: #38bdf8;
 }
 
 .card h3 {
     color: #38bdf8;
     margin-bottom: 12px;
-}
-
-.gallery .card {
-    display: flex;
-    flex-direction: column;
 }
 
 .project-image {
@@ -205,7 +196,6 @@ section { padding: 75px 10%; }
     padding: 12px;
     border: none;
     background: transparent;
-    box-shadow: none;
 }
 
 #thumbnailGallery .project-image {
@@ -255,9 +245,7 @@ body.admin-mode .admin-only {
 }
 
 .contact { text-align: center; }
-
 .contact p { margin: 15px; }
-
 .contact a { color: #38bdf8; }
 
 footer {
@@ -303,7 +291,7 @@ footer {
 .status {
     text-align: center;
     color: #38bdf8;
-    margin: 10px;
+    margin: 15px;
 }
 
 @media(max-width:750px) {
@@ -461,9 +449,7 @@ footer {
     <p>Email: your@email.com</p>
     <p>WhatsApp: Your Number</p>
     <p>GitHub: github.com/yourusername</p>
-    <a href="mailto:your@email.com" class="btn">
-        Send Me an Email
-    </a>
+    <a href="mailto:your@email.com" class="btn">Send Me an Email</a>
 </section>
 
 <footer>
@@ -477,26 +463,20 @@ footer {
 
 <p class="status" id="status"></p>
 
-<!-- Firebase ONLINE DATABASE AND STORAGE -->
-
 <script type="module">
 
-/* =========================================
-   STEP 1: PASTE YOUR FIREBASE CONFIG HERE
-========================================= */
+/* FIREBASE CONFIGURATION
+   Apni Firebase web app ki values paste karein.
+*/
 
 const firebaseConfig = {
-    apiKey: "PASTE_YOUR_API_KEY",
-    authDomain: "PASTE_YOUR_AUTH_DOMAIN",
-    projectId: "PASTE_YOUR_PROJECT_ID",
-    storageBucket: "PASTE_YOUR_STORAGE_BUCKET",
-    messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
-    appId: "PASTE_YOUR_APP_ID"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
-
-/* =========================================
-   STEP 2: FIREBASE IMPORTS
-========================================= */
 
 import { initializeApp }
 from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
@@ -530,18 +510,19 @@ const allowedTypes = [
     "image/gif"
 ];
 
-/* ADMIN MODE */
-
 const ADMIN_PASSWORD = "sami8888";
 let adminMode = false;
 
-document.addEventListener("keydown", async function(event) {
+/* ADMIN LOGIN */
+
+document.addEventListener("keydown", function(event) {
 
     if (
         event.ctrlKey &&
         event.shiftKey &&
         event.key.toLowerCase() === "a"
     ) {
+
         event.preventDefault();
 
         if (adminMode) {
@@ -551,28 +532,28 @@ document.addEventListener("keydown", async function(event) {
             return;
         }
 
-        const entered = prompt("Admin password enter karein:");
+        const password = prompt("Admin password enter karein:");
 
-        if (entered === ADMIN_PASSWORD) {
+        if (password === ADMIN_PASSWORD) {
             adminMode = true;
             document.body.classList.add("admin-mode");
             alert("Admin mode ON.");
-        } else if (entered !== null) {
-            alert("Password ghalat hai.");
+        } else if (password !== null) {
+            alert("Wrong password.");
         }
     }
 });
 
-/* IMAGE VIEWER */
+/* FULL SCREEN VIEWER */
 
 const imageViewer = document.getElementById("imageViewer");
 const viewerImage = document.getElementById("viewerImage");
 
 document.addEventListener("click", function(event) {
+
     const img = event.target.closest("img");
 
     if (!img || img.id === "viewerImage") return;
-
     if (!img.closest(".profile, .about, .gallery")) return;
 
     viewerImage.src = img.src;
@@ -594,23 +575,23 @@ document.addEventListener("keydown", function(event) {
     if (event.key === "Escape") closeViewer();
 });
 
-/* UPLOAD IMAGE ONLINE */
+/* ONLINE UPLOAD */
 
 async function uploadImage(key, file) {
 
     if (!adminMode) {
-        alert("Admin login required.");
-        return;
+        alert("Only admin can upload pictures.");
+        return null;
     }
 
     if (!allowedTypes.includes(file.type)) {
-        alert("Invalid picture format.");
-        return;
+        alert("Invalid image format.");
+        return null;
     }
 
     if (file.size > 10 * 1024 * 1024) {
-        alert("Picture 10 MB se chhoti honi chahiye.");
-        return;
+        alert("Image must be smaller than 10 MB.");
+        return null;
     }
 
     statusText.textContent = "Uploading picture...";
@@ -630,7 +611,7 @@ async function uploadImage(key, file) {
             updatedAt: new Date().toISOString()
         });
 
-        statusText.textContent = "Picture successfully uploaded!";
+        statusText.textContent = "Picture uploaded successfully!";
 
         return downloadURL;
 
@@ -638,15 +619,15 @@ async function uploadImage(key, file) {
 
         console.error(error);
 
-        statusText.textContent = "Upload failed: " + error.message;
+        statusText.textContent = "Upload failed.";
 
-        alert("Upload failed. Firebase settings aur permissions check karein.");
+        alert("Firebase configuration or permission check karein.");
 
         return null;
     }
 }
 
-/* LOAD IMAGE FROM ONLINE DATABASE */
+/* PUBLIC IMAGE DISPLAY */
 
 async function loadOnlineImage(key, image) {
 
@@ -663,7 +644,7 @@ async function loadOnlineImage(key, image) {
     }
 }
 
-/* SINGLE IMAGE UPLOAD SETUP */
+/* PROFILE AND ABOUT */
 
 function setupUpload(inputId, imageId, key) {
 
@@ -675,7 +656,6 @@ function setupUpload(inputId, imageId, key) {
     input.addEventListener("change", async function() {
 
         const file = this.files[0];
-
         if (!file) return;
 
         const url = await uploadImage(key, file);
@@ -686,13 +666,10 @@ function setupUpload(inputId, imageId, key) {
     });
 }
 
-/* PROFILE AND ABOUT */
-
 setupUpload("photoUpload", "profilePic", "profile-picture");
-
 setupUpload("aboutUpload", "aboutPic", "about-picture");
 
-/* BANNER GIF */
+/* WELCOME GIF */
 
 const bannerInput = document.getElementById("bannerUpload");
 const bannerImage = document.getElementById("welcomeBanner");
@@ -702,7 +679,6 @@ loadOnlineImage("welcome-banner", bannerImage);
 bannerInput.addEventListener("change", async function() {
 
     const file = this.files[0];
-
     if (!file) return;
 
     if (file.type !== "image/gif") {
@@ -718,7 +694,7 @@ bannerInput.addEventListener("change", async function() {
     this.value = "";
 });
 
-/* CREATE PORTFOLIO BOXES */
+/* PORTFOLIO BOXES */
 
 function makeSlots(containerId, type, count) {
 
@@ -726,20 +702,19 @@ function makeSlots(containerId, type, count) {
 
     for (let i = 1; i <= count; i++) {
 
+        const key = type.toLowerCase() + "-" + i;
+
         const card = document.createElement("div");
         card.className = "card";
 
-        const title = type + " " + i;
-
         const image = document.createElement("img");
         image.className = "project-image";
-        image.alt = title;
-
+        image.alt = type + " " + i;
         image.src =
-            `https://placehold.co/600x350/17243b/38bdf8?text=${encodeURIComponent(title)}`;
+            `https://placehold.co/600x350/17243b/38bdf8?text=${type}+${i}`;
 
         const heading = document.createElement("h3");
-        heading.textContent = title;
+        heading.textContent = type + " " + i;
 
         const label = document.createElement("label");
         label.className = "project-upload admin-only";
@@ -749,11 +724,9 @@ function makeSlots(containerId, type, count) {
         input.type = "file";
         input.accept = "image/jpeg,image/png,image/webp";
         input.hidden = true;
-
-        const key = type.toLowerCase() + "-" + i;
-
-        label.htmlFor = "upload-" + key;
         input.id = "upload-" + key;
+
+        label.htmlFor = input.id;
 
         const change = document.createElement("button");
         change.type = "button";
@@ -767,7 +740,6 @@ function makeSlots(containerId, type, count) {
         input.addEventListener("change", async function() {
 
             const file = this.files[0];
-
             if (!file) return;
 
             const url = await uploadImage(key, file);
