@@ -43,11 +43,7 @@ nav a {
     margin-left: 20px;
 }
 
-nav a:hover {
-    color: #38bdf8;
-}
-
-/* WELCOME BANNER */
+nav a:hover { color: #38bdf8; }
 
 .banner-area {
     width: 100%;
@@ -63,7 +59,7 @@ nav a:hover {
     object-fit: cover;
     border: 2px solid #38bdf8;
     border-radius: 8px;
-    margin: 0 auto;
+    margin: auto;
     background: #17243b;
 }
 
@@ -87,35 +83,23 @@ body.admin-mode .banner-upload {
     gap: 40px;
 }
 
-.hero-content {
-    max-width: 600px;
-}
+.hero-content { max-width: 600px; }
 
 .hero h1 {
     font-size: 50px;
     margin: 15px 0;
 }
 
-.hero h1 span,
-.hero h2 {
-    color: #38bdf8;
-}
+.hero h1 span, .hero h2 { color: #38bdf8; }
 
-.hero h2 {
-    margin-bottom: 20px;
-}
+.hero h2 { margin-bottom: 20px; }
 
-.hero p,
-.about p,
-.card p,
-.contact p {
+.hero p, .about p, .card p, .contact p {
     color: #b8c5d8;
     line-height: 1.8;
 }
 
-.hero p {
-    margin-bottom: 25px;
-}
+.hero p { margin-bottom: 25px; }
 
 .btn {
     display: inline-block;
@@ -129,13 +113,7 @@ body.admin-mode .banner-upload {
     margin: 5px;
 }
 
-.btn:hover {
-    background: #0284c7;
-}
-
-.profile {
-    text-align: center;
-}
+.profile { text-align: center; }
 
 .profile img {
     width: 260px;
@@ -146,8 +124,7 @@ body.admin-mode .banner-upload {
     background: #17243b;
 }
 
-.upload,
-.project-upload {
+.upload, .project-upload {
     display: inline-block;
     margin: 12px auto;
     color: #38bdf8;
@@ -155,9 +132,7 @@ body.admin-mode .banner-upload {
     text-align: center;
 }
 
-section {
-    padding: 75px 10%;
-}
+section { padding: 75px 10%; }
 
 .section-title {
     text-align: center;
@@ -165,9 +140,7 @@ section {
     margin-bottom: 40px;
 }
 
-.section-title span {
-    color: #38bdf8;
-}
+.section-title span { color: #38bdf8; }
 
 .about p {
     text-align: center;
@@ -186,14 +159,20 @@ section {
     background: #17243b;
 }
 
+.gallery {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+}
+
 .card {
     background: #111d33;
     padding: 20px;
     border-radius: 12px;
     text-align: center;
     border: 1px solid #243653;
-    transition: .3s;
     min-width: 0;
+    transition: .3s;
 }
 
 .card:hover {
@@ -206,16 +185,9 @@ section {
     margin-bottom: 12px;
 }
 
-.gallery {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-}
-
 .gallery .card {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
 }
 
 .project-image {
@@ -229,8 +201,6 @@ section {
     cursor: zoom-in;
 }
 
-/* THUMBNAILS */
-
 #thumbnailGallery .card {
     padding: 12px;
     border: none;
@@ -239,36 +209,27 @@ section {
 }
 
 #thumbnailGallery .project-image {
-    display: block;
     width: 100%;
     aspect-ratio: 16 / 9;
     height: auto;
     object-fit: cover;
-    border: none;
-    border-radius: 0;
-    margin: 0 0 12px;
+    border: 2px solid #38bdf8;
 }
-
-/* POSTERS */
 
 .poster-grid .project-image {
     height: 260px;
     border: 2px solid #38bdf8;
-    border-radius: 8px;
     padding: 3px;
 }
-
-/* LOGOS */
 
 .logo-grid .project-image {
     width: 170px;
     height: 170px;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     object-fit: contain;
     border: 2px solid #38bdf8;
     border-radius: 50%;
     margin: 0 auto 15px;
-    background: #17243b;
 }
 
 .upload-actions {
@@ -280,36 +241,24 @@ section {
 
 .change-btn {
     background: #243653;
-    color: #fff;
+    color: white;
     border: 1px solid #38bdf8;
     padding: 9px 14px;
     border-radius: 6px;
     cursor: pointer;
 }
 
-.change-btn:hover {
-    background: #0c4a6e;
-}
-
-.admin-only {
-    display: none !important;
-}
+.admin-only { display: none !important; }
 
 body.admin-mode .admin-only {
     display: inline-block !important;
 }
 
-.contact {
-    text-align: center;
-}
+.contact { text-align: center; }
 
-.contact p {
-    margin: 15px;
-}
+.contact p { margin: 15px; }
 
-.contact a {
-    color: #38bdf8;
-}
+.contact a { color: #38bdf8; }
 
 footer {
     background: #101a30;
@@ -318,22 +267,18 @@ footer {
     color: #9caec6;
 }
 
-/* FULL SCREEN IMAGE */
-
 .image-viewer {
     display: none;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, .95);
+    background: rgba(0,0,0,.95);
     z-index: 9999;
     justify-content: center;
     align-items: center;
     padding: 25px;
 }
 
-.image-viewer.open {
-    display: flex;
-}
+.image-viewer.open { display: flex; }
 
 .image-viewer img {
     max-width: 95%;
@@ -345,14 +290,20 @@ footer {
     position: absolute;
     top: 20px;
     right: 30px;
-    color: white;
     background: #e11d48;
+    color: white;
     border: none;
     border-radius: 50%;
     width: 45px;
     height: 45px;
     font-size: 25px;
     cursor: pointer;
+}
+
+.status {
+    text-align: center;
+    color: #38bdf8;
+    margin: 10px;
 }
 
 @media(max-width:750px) {
@@ -368,13 +319,9 @@ footer {
         gap: 12px;
     }
 
-    nav a {
-        margin: 0;
-    }
+    nav a { margin: 0; }
 
-    .banner-area {
-        padding: 12px 5%;
-    }
+    .banner-area { padding: 12px 5%; }
 
     .welcome-banner {
         height: auto;
@@ -386,18 +333,14 @@ footer {
         text-align: center;
     }
 
-    .hero h1 {
-        font-size: 36px;
-    }
+    .hero h1 { font-size: 36px; }
 
     .profile img {
         width: 220px;
         height: 220px;
     }
 
-    section {
-        padding: 55px 6%;
-    }
+    section { padding: 55px 6%; }
 }
 </style>
 </head>
@@ -406,7 +349,6 @@ footer {
 
 <header>
     <div class="logo">SAMI.</div>
-
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -416,84 +358,55 @@ footer {
     </nav>
 </header>
 
-<!-- WELCOME BANNER -->
-
 <div class="banner-area">
-
-    <img
-        id="welcomeBanner"
-        class="welcome-banner"
-        src="https://placehold.co/1200x240/17243b/38bdf8?text=Welcome+To+My+Portfolio"
-        alt="Welcome Banner"
-    >
+    <img id="welcomeBanner"
+         class="welcome-banner"
+         src="https://placehold.co/1200x240/17243b/38bdf8?text=Welcome+To+My+Portfolio"
+         alt="Welcome Banner">
 
     <label class="banner-upload" for="bannerUpload">
         Upload / Change Welcome GIF
     </label>
-
-    <input
-        type="file"
-        id="bannerUpload"
-        accept="image/gif"
-        hidden
-    >
-
+    <input type="file" id="bannerUpload"
+           accept="image/gif" hidden>
 </div>
 
-<!-- HOME -->
-
 <div class="hero" id="home">
-
     <div class="hero-content">
         <h2>Hello, I'm</h2>
         <h1>Sami <span>Niazi</span></h1>
         <h2>Graphic Designer</h2>
-
         <p>
             Welcome to my personal portfolio! I am a creative
             graphic designer. I love creating professional
             thumbnails, posters, logos and social media graphics.
         </p>
-
         <a href="#projects" class="btn">View My Work</a>
         <a href="#contact" class="btn">Contact Me</a>
     </div>
 
     <div class="profile">
-
-        <img
-            id="profilePic"
-            alt="Sami Profile"
-            src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
-        >
+        <img id="profilePic"
+             src="https://placehold.co/300x300/17243b/38bdf8?text=Sami"
+             alt="Sami Profile">
 
         <div class="upload-actions">
             <label class="upload admin-only" for="photoUpload">
                 Upload / Change Profile Picture
             </label>
         </div>
-
         <input type="file" id="photoUpload"
-            accept="image/jpeg,image/png,image/webp" hidden>
-
+               accept="image/jpeg,image/png,image/webp" hidden>
     </div>
-
 </div>
 
-<!-- ABOUT -->
-
 <section class="about" id="about">
+    <h2 class="section-title">About <span>Me</span></h2>
 
-    <h2 class="section-title">
-        About <span>Me</span>
-    </h2>
-
-    <img
-        id="aboutPic"
-        class="about-image"
-        src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
-        alt="About Sami"
-    >
+    <img id="aboutPic"
+         class="about-image"
+         src="https://placehold.co/300x300/17243b/38bdf8?text=About+Me"
+         alt="About Sami">
 
     <div class="upload-actions">
         <label class="upload admin-only" for="aboutUpload">
@@ -502,7 +415,7 @@ footer {
     </div>
 
     <input type="file" id="aboutUpload"
-        accept="image/jpeg,image/png,image/webp" hidden>
+           accept="image/jpeg,image/png,image/webp" hidden>
 
     <p>
         My name is Sami Niazi. I am passionate about Graphic
@@ -511,114 +424,128 @@ footer {
         My goal is to improve my creativity and become a professional
         graphic designer.
     </p>
-
 </section>
 
-<!-- SKILLS -->
-
 <section id="skills">
-
-    <h2 class="section-title">
-        My <span>Skills</span>
-    </h2>
-
+    <h2 class="section-title">My <span>Skills</span></h2>
     <div class="gallery">
-
         <div class="card">
             <h3>GRAPHIC DESIGNING</h3>
-
             <p>
                 Professional thumbnails, poster design, logo design,
                 banners, social media posts and creative graphic designs.
             </p>
         </div>
-
     </div>
-
 </section>
 
-<!-- PORTFOLIO -->
-
 <section id="projects">
+    <h2 class="section-title">My <span>Portfolio</span></h2>
 
-    <h2 class="section-title">
-        My <span>Portfolio</span>
-    </h2>
-
-    <h2 class="section-title">
-        YouTube <span>Thumbnails</span>
-    </h2>
-
+    <h2 class="section-title">YouTube <span>Thumbnails</span></h2>
     <div class="gallery" id="thumbnailGallery"></div>
 
     <h2 class="section-title" style="margin-top:65px">
         Poster <span>Designs</span>
     </h2>
-
     <div class="gallery poster-grid" id="posterGallery"></div>
 
     <h2 class="section-title" style="margin-top:65px">
         Logo <span>Designs</span>
     </h2>
-
     <div class="gallery logo-grid" id="logoGallery"></div>
-
 </section>
 
-<!-- CONTACT -->
-
 <section class="contact" id="contact">
-
-    <h2 class="section-title">
-        Contact <span>Me</span>
-    </h2>
-
+    <h2 class="section-title">Contact <span>Me</span></h2>
     <p>Email: your@email.com</p>
     <p>WhatsApp: Your Number</p>
     <p>GitHub: github.com/yourusername</p>
-
     <a href="mailto:your@email.com" class="btn">
         Send Me an Email
     </a>
-
 </section>
 
 <footer>
     <p>© 2026 Sami Niazi | All Rights Reserved</p>
 </footer>
 
-<!-- FULL SCREEN IMAGE VIEWER -->
-
 <div class="image-viewer" id="imageViewer">
-
-    <button class="viewer-close" id="viewerClose">
-        &times;
-    </button>
-
+    <button class="viewer-close" id="viewerClose">&times;</button>
     <img id="viewerImage" src="" alt="Full Screen Picture">
-
 </div>
 
-<script>
+<p class="status" id="status"></p>
 
-/* ADMIN PASSWORD */
+<!-- Firebase ONLINE DATABASE AND STORAGE -->
+
+<script type="module">
+
+/* =========================================
+   STEP 1: PASTE YOUR FIREBASE CONFIG HERE
+========================================= */
+
+const firebaseConfig = {
+    apiKey: "PASTE_YOUR_API_KEY",
+    authDomain: "PASTE_YOUR_AUTH_DOMAIN",
+    projectId: "PASTE_YOUR_PROJECT_ID",
+    storageBucket: "PASTE_YOUR_STORAGE_BUCKET",
+    messagingSenderId: "PASTE_YOUR_MESSAGING_SENDER_ID",
+    appId: "PASTE_YOUR_APP_ID"
+};
+
+/* =========================================
+   STEP 2: FIREBASE IMPORTS
+========================================= */
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/11.6.0/firebase-app.js";
+
+import {
+    getFirestore,
+    doc,
+    setDoc,
+    getDoc
+}
+from "https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore.js";
+
+import {
+    getStorage,
+    ref,
+    uploadBytes,
+    getDownloadURL
+}
+from "https://www.gstatic.com/firebasejs/11.6.0/firebase-storage.js";
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+const statusText = document.getElementById("status");
+
+const allowedTypes = [
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+    "image/gif"
+];
+
+/* ADMIN MODE */
 
 const ADMIN_PASSWORD = "sami8888";
+let adminMode = false;
 
-/* ADMIN MODE: CTRL + SHIFT + A */
-
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", async function(event) {
 
     if (
         event.ctrlKey &&
         event.shiftKey &&
         event.key.toLowerCase() === "a"
     ) {
-
         event.preventDefault();
 
-        if (document.body.classList.contains("admin-mode")) {
-
+        if (adminMode) {
+            adminMode = false;
             document.body.classList.remove("admin-mode");
             alert("Admin mode band ho gaya.");
             return;
@@ -627,12 +554,10 @@ document.addEventListener("keydown", function(event) {
         const entered = prompt("Admin password enter karein:");
 
         if (entered === ADMIN_PASSWORD) {
-
+            adminMode = true;
             document.body.classList.add("admin-mode");
-            alert("Admin mode on. Ab aap pictures upload/change kar sakte hain.");
-
+            alert("Admin mode ON.");
         } else if (entered !== null) {
-
             alert("Password ghalat hai.");
         }
     }
@@ -644,7 +569,6 @@ const imageViewer = document.getElementById("imageViewer");
 const viewerImage = document.getElementById("viewerImage");
 
 document.addEventListener("click", function(event) {
-
     const img = event.target.closest("img");
 
     if (!img || img.id === "viewerImage") return;
@@ -653,149 +577,100 @@ document.addEventListener("click", function(event) {
 
     viewerImage.src = img.src;
     imageViewer.classList.add("open");
-
 });
 
-document.getElementById("viewerClose").addEventListener("click", function() {
-
+function closeViewer() {
     imageViewer.classList.remove("open");
     viewerImage.src = "";
+}
 
-});
+document.getElementById("viewerClose").onclick = closeViewer;
 
-imageViewer.addEventListener("click", function(event) {
-
-    if (event.target === imageViewer) {
-        imageViewer.classList.remove("open");
-        viewerImage.src = "";
-    }
-
-});
+imageViewer.onclick = function(event) {
+    if (event.target === imageViewer) closeViewer();
+};
 
 document.addEventListener("keydown", function(event) {
-
-    if (event.key === "Escape") {
-        imageViewer.classList.remove("open");
-        viewerImage.src = "";
-    }
-
+    if (event.key === "Escape") closeViewer();
 });
 
-/* IMAGE DATABASE */
+/* UPLOAD IMAGE ONLINE */
 
-const DB_NAME = "SamiPortfolioImages";
-const STORE_NAME = "images";
+async function uploadImage(key, file) {
 
-const allowedTypes = [
-    "image/jpeg",
-    "image/png",
-    "image/webp"
-];
+    if (!adminMode) {
+        alert("Admin login required.");
+        return;
+    }
 
-function openImageDB() {
+    if (!allowedTypes.includes(file.type)) {
+        alert("Invalid picture format.");
+        return;
+    }
 
-    return new Promise((resolve, reject) => {
+    if (file.size > 10 * 1024 * 1024) {
+        alert("Picture 10 MB se chhoti honi chahiye.");
+        return;
+    }
 
-        const request = indexedDB.open(DB_NAME, 1);
-
-        request.onupgradeneeded = () => {
-            request.result.createObjectStore(STORE_NAME);
-        };
-
-        request.onsuccess = () => resolve(request.result);
-        request.onerror = () => reject(request.error);
-
-    });
-
-}
-
-/* SAVE IMAGE */
-
-async function saveImage(key, file) {
-
-    const db = await openImageDB();
-
-    return new Promise((resolve, reject) => {
-
-        const tx = db.transaction(STORE_NAME, "readwrite");
-
-        tx.objectStore(STORE_NAME).put(file, key);
-
-        tx.oncomplete = () => {
-            db.close();
-            resolve();
-        };
-
-        tx.onerror = () => {
-            db.close();
-            reject(tx.error);
-        };
-
-    });
-
-}
-
-/* LOAD IMAGE */
-
-async function loadImage(key) {
-
-    const db = await openImageDB();
-
-    return new Promise((resolve, reject) => {
-
-        const tx = db.transaction(STORE_NAME, "readonly");
-
-        const req = tx.objectStore(STORE_NAME).get(key);
-
-        req.onsuccess = () => {
-            const result = req.result;
-            db.close();
-            resolve(result);
-        };
-
-        req.onerror = () => {
-            db.close();
-            reject(req.error);
-        };
-
-    });
-
-}
-
-/* RESTORE SAVED IMAGE */
-
-async function restoreImage(key, img) {
+    statusText.textContent = "Uploading picture...";
 
     try {
 
-        const file = await loadImage(key);
+        const storageRef = ref(storage, "portfolio/" + key);
 
-        if (file) {
+        await uploadBytes(storageRef, file, {
+            contentType: file.type
+        });
 
-            if (img.dataset.objectUrl) {
-                URL.revokeObjectURL(img.dataset.objectUrl);
-            }
+        const downloadURL = await getDownloadURL(storageRef);
 
-            const url = URL.createObjectURL(file);
+        await setDoc(doc(db, "portfolioImages", key), {
+            url: downloadURL,
+            updatedAt: new Date().toISOString()
+        });
 
-            img.src = url;
-            img.dataset.objectUrl = url;
+        statusText.textContent = "Picture successfully uploaded!";
+
+        return downloadURL;
+
+    } catch (error) {
+
+        console.error(error);
+
+        statusText.textContent = "Upload failed: " + error.message;
+
+        alert("Upload failed. Firebase settings aur permissions check karein.");
+
+        return null;
+    }
+}
+
+/* LOAD IMAGE FROM ONLINE DATABASE */
+
+async function loadOnlineImage(key, image) {
+
+    try {
+
+        const snapshot = await getDoc(doc(db, "portfolioImages", key));
+
+        if (snapshot.exists()) {
+            image.src = snapshot.data().url;
         }
 
     } catch (error) {
-        console.error("Image restore error:", error);
+        console.error("Image loading error:", error);
     }
-
 }
 
-/* PROFILE AND ABOUT UPLOAD */
+/* SINGLE IMAGE UPLOAD SETUP */
 
-function setupUpload(inputId, imageId, storageKey) {
+function setupUpload(inputId, imageId, key) {
 
     const input = document.getElementById(inputId);
     const image = document.getElementById(imageId);
 
-    restoreImage(storageKey, image);
+    loadOnlineImage(key, image);
 
     input.addEventListener("change", async function() {
 
@@ -803,44 +678,26 @@ function setupUpload(inputId, imageId, storageKey) {
 
         if (!file) return;
 
-        if (!allowedTypes.includes(file.type)) {
-            alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
-            this.value = "";
-            return;
-        }
+        const url = await uploadImage(key, file);
 
-        try {
-
-            await saveImage(storageKey, file);
-
-            if (image.dataset.objectUrl) {
-                URL.revokeObjectURL(image.dataset.objectUrl);
-            }
-
-            const newUrl = URL.createObjectURL(file);
-
-            image.src = newUrl;
-            image.dataset.objectUrl = newUrl;
-
-        } catch (error) {
-
-            alert("Picture save nahi ho saki. Browser storage check karein.");
-            console.error(error);
-
-        }
+        if (url) image.src = url;
 
         this.value = "";
-
     });
-
 }
 
-/* WELCOME GIF UPLOAD */
+/* PROFILE AND ABOUT */
+
+setupUpload("photoUpload", "profilePic", "profile-picture");
+
+setupUpload("aboutUpload", "aboutPic", "about-picture");
+
+/* BANNER GIF */
 
 const bannerInput = document.getElementById("bannerUpload");
 const bannerImage = document.getElementById("welcomeBanner");
 
-restoreImage("welcome-banner", bannerImage);
+loadOnlineImage("welcome-banner", bannerImage);
 
 bannerInput.addEventListener("change", async function() {
 
@@ -849,33 +706,16 @@ bannerInput.addEventListener("change", async function() {
     if (!file) return;
 
     if (file.type !== "image/gif") {
-        alert("Sirf GIF animation upload kar sakte hain.");
+        alert("Sirf GIF upload karein.");
         this.value = "";
         return;
     }
 
-    try {
+    const url = await uploadImage("welcome-banner", file);
 
-        await saveImage("welcome-banner", file);
-
-        if (bannerImage.dataset.objectUrl) {
-            URL.revokeObjectURL(bannerImage.dataset.objectUrl);
-        }
-
-        const url = URL.createObjectURL(file);
-
-        bannerImage.src = url;
-        bannerImage.dataset.objectUrl = url;
-
-    } catch (error) {
-
-        alert("Banner save nahi ho saka.");
-        console.error(error);
-
-    }
+    if (url) bannerImage.src = url;
 
     this.value = "";
-
 });
 
 /* CREATE PORTFOLIO BOXES */
@@ -892,17 +732,13 @@ function makeSlots(containerId, type, count) {
         const title = type + " " + i;
 
         const image = document.createElement("img");
-
         image.className = "project-image";
         image.alt = title;
 
         image.src =
             `https://placehold.co/600x350/17243b/38bdf8?text=${encodeURIComponent(title)}`;
 
-        image.id = type.toLowerCase() + "Image" + i;
-
         const heading = document.createElement("h3");
-        heading.className = "project-title";
         heading.textContent = title;
 
         const label = document.createElement("label");
@@ -913,18 +749,20 @@ function makeSlots(containerId, type, count) {
         input.type = "file";
         input.accept = "image/jpeg,image/png,image/webp";
         input.hidden = true;
-        input.id = type.toLowerCase() + "Upload" + i;
-
-        label.htmlFor = input.id;
 
         const key = type.toLowerCase() + "-" + i;
+
+        label.htmlFor = "upload-" + key;
+        input.id = "upload-" + key;
 
         const change = document.createElement("button");
         change.type = "button";
         change.className = "change-btn admin-only";
         change.textContent = "Change Picture";
 
-        change.addEventListener("click", () => input.click());
+        change.onclick = () => input.click();
+
+        loadOnlineImage(key, image);
 
         input.addEventListener("change", async function() {
 
@@ -932,61 +770,20 @@ function makeSlots(containerId, type, count) {
 
             if (!file) return;
 
-            if (!allowedTypes.includes(file.type)) {
-                alert("Sirf JPG, PNG aur WEBP pictures upload kar sakte hain.");
-                this.value = "";
-                return;
-            }
+            const url = await uploadImage(key, file);
 
-            try {
-
-                await saveImage(key, file);
-
-                if (image.dataset.objectUrl) {
-                    URL.revokeObjectURL(image.dataset.objectUrl);
-                }
-
-                const url = URL.createObjectURL(file);
-
-                image.src = url;
-                image.dataset.objectUrl = url;
-
-            } catch (error) {
-
-                alert("Picture save nahi ho saki.");
-                console.error(error);
-
-            }
+            if (url) image.src = url;
 
             this.value = "";
-
         });
-
-        restoreImage(key, image);
 
         card.append(image, heading, label, input, change);
         container.appendChild(card);
-
     }
-
 }
 
-/* SETUP PROFILE AND ABOUT UPLOAD */
-
-setupUpload("photoUpload", "profilePic", "profile-picture");
-
-setupUpload("aboutUpload", "aboutPic", "about-picture");
-
-/* CREATE 10 THUMBNAILS */
-
 makeSlots("thumbnailGallery", "Thumbnail", 10);
-
-/* CREATE 10 POSTERS */
-
 makeSlots("posterGallery", "Poster", 10);
-
-/* CREATE 10 LOGOS */
-
 makeSlots("logoGallery", "Logo", 10);
 
 </script>
